@@ -2,3 +2,17 @@ h1
 {
     color: #2211ff;
 }
+.jumbotron
+{
+    background-color: #e60000;
+    color:#1a0000;
+}
+.navbar-inverse 
+{
+    background-color: #803300;
+    
+}
+a:hover 
+{
+    background-color: #ffb3b3;
+}
