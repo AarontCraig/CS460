@@ -4,14 +4,50 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Aaron Craig's CS Portfolio</title>
-        <link rel="stylesheet" href="CS460\HW 1\My Website\bootstrap 3\css\bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="../portfolio.css">
-        <script src="..\HW 1\My Website\bootstrap 3\js\bootstrap.min.js"></script>
+        <link rel="stylesheet" href="HW 1\My Website\bootstrap 3\css\bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="CSS\portfolio.css">
+        <script src="HW 1\My Website\bootstrap 3\js\bootstrap.min.js"></script>
     </head>
     <body>
-        <h1 class="jumbotron">Hello</h1>
-        <p>Link to my page <a href="CS460\docs\HW 1\My Website\HTML\index.html">here</a></p>
-        <p>Link to my page <a href="HW 1\My Website\HTML\index.html">here</a></p>
-        <p>Link to my page <a href="/HW 1/My Website/HTML/index.html">here</a></p>
+        <h1 class="jumbotron text-center">Hello</h1>
+        <div class="container-fluid">
+            <div class="row content">
+                <div class="col-sm-3 sidenav">
+                    <h4>Aaron's CS Portfolio</h4>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="HW 1\My Website\HTML\index.html">HTML &amp; CSS Showcase</a></li>
+                    </ul>
+                    <br>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search Blog..">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <h4><small>RECENT POSTS</small></h4>
+                    <hr>
+                    <!--Sections of the blog, usually snippets-->
+                    <h2><a href="HW 1\My Website\HTML\index.html">Shadow of Essence Webpage</a></h2>
+                    <h5><span class="label label-danger"></span>Post by Aaron Craig, October 3rd 2017</h5>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <a href="HW 1\My Website\HTML\index.html"><img src="Images\SoE Webpage ScreenShot.PNG" height="200" width="300" alt="Screenshot of website"> </a>                   
+                        </div>
+                        <div class="col-sm-5">
+                            <p>In my CS460 class, we developed a website from scratch using HTML, CSS, and Bootsdtrap.
+                                This is what I created, a website to showcase a video game I was working on at the time.
+                                It contains a modal, page naviagation, and all the basic functionality that comes with HTML and CSS.
+                                <br><br>Please feel free to explore, and if you have any questions about the game, don't hesitate to ask.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
