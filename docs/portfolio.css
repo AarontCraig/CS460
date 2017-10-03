@@ -28,3 +28,7 @@ img.thumbnail:hover
     background: #567992;
     opacity: 0.7;
 }
+.sidenav
+{
+    border: 3px solid #1C303F;
+}
