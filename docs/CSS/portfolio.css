@@ -23,7 +23,8 @@ a
 {
     color: #6DC5FF;
 }
-img:hover
+img.thumbnail:hover
 {
-    background-color: #838A8F;
+    background: #567992;
+    opacity: 0.7;
 }
