@@ -2,3 +2,24 @@ img
 {
     border-radius: 10px;
 }
+body 
+{
+    background-color: #173D57;
+}
+.jumbotron
+{
+    background-color: #326586;
+    color: #B7E3FF
+}
+p
+{
+    color: #5D9AC4;
+}
+h1, h2, h3, h4, h5, h6 
+{
+    color: #6DC5FF;
+}
+a
+{
+    color: #6DC5FF;
+}
