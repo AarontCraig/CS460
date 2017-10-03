@@ -1,3 +1,4 @@
+///Inspired by W3Schools.com
 // Get the modal
 var modal = document.getElementById('myModal');
 
