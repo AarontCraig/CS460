@@ -23,6 +23,10 @@ a
 {
     color: #6DC5FF;
 }
+a:hover 
+{
+    color: #6DC5FF;
+}
 img.thumbnail:hover
 {
     background: #567992;
@@ -42,8 +46,5 @@ img.thumbnail:hover
 }
 xmp
 {
-    color: #5D9AC4;
+    color: rgba(34, 167, 105, 0.56);
 }
-/* Code from https://bootsnipp.com/snippets/7XVM2 */
-.modal-dialog {width:600px;}
-.thumbnail {margin-bottom:6px;}
