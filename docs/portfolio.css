@@ -32,3 +32,18 @@ img.thumbnail:hover
 {
     border: 3px solid #1C303F;
 }
+.showcase
+{
+    margin-bottom: 25px;
+}
+.rundown li
+{
+    padding-bottom: 10px;
+}
+xmp
+{
+    color: #5D9AC4;
+}
+/* Code from https://bootsnipp.com/snippets/7XVM2 */
+.modal-dialog {width:600px;}
+.thumbnail {margin-bottom:6px;}
