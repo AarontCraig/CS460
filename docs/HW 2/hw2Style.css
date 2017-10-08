@@ -1,0 +1,11 @@
+body 
+{
+    background-image: url("Images\crystal-ball.jpg");
+    background-color: black;
+}
+
+.jumbotron
+{
+    background-color: #3B0B29;
+    color: white;
+}
