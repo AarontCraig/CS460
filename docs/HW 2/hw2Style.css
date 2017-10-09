@@ -3,7 +3,20 @@ body
     /*background-image: url("Images/crystal-ball.jpg");*/
     background-color: black;
 }
-
+label
+{
+    color: white;
+}
+button
+{
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+.startHidden 
+{
+    display: none;
+}
 .jumbotron
 {
 
