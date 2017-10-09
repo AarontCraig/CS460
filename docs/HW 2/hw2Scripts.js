@@ -25,8 +25,6 @@ function fadeOut() {
         $("body").css("opacity", fade);
         if(fade < 0) {
             clearInterval(interval);
-            console.log(interval);
-            //$("body").css("opacity", "1");
         }  
     }
 }
@@ -34,4 +32,11 @@ function revertOpacity() {
     clearInterval(interval);
     fade = 1;
     $("body").css("opacity", "1");
+    //Clear all the other elements
+    $(".leftBars, #resultsButton, #dareButton").css("display", "none");
+    x = document.getElementById("header");
+    x.innerHTML = "Now the results!";
+}
+function fillResultsDiv() {
+
 }
