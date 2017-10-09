@@ -2,6 +2,7 @@ body
 {
     /*background-image: url("Images/crystal-ball.jpg");*/
     background-color: black;
+    opacity: 1;
 }
 label
 {
@@ -13,8 +14,13 @@ button
     margin: 10px;
     text-align: center;
 }
-.startHidden 
+.leftBars 
 {
+    display: none;
+}
+#resultsButton
+{
+    padding: 100px;
     display: none;
 }
 .jumbotron

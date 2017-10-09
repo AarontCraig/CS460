@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="..\HW 1\My Website\bootstrap 3\css\bootstrap.min.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" type="text/css" href="hw2Style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
         <h1 class="jumbotron text-center">Let's guess your future!</h1>
@@ -14,14 +15,15 @@
         <script src="hw2Scripts.js"></script>
         <div class="row">
             <div class="col-md-6 form-group">
-                <label for="fname" class="startHidden">Enter Your First Name:</label>
-                <input type="text" class="form-control startHidden" id="fName">
-                <label for="lname" class="startHidden">Now Your Last Name:</label>
-                <input type="text" class="form-control startHidden" id="lName" onfocusout="typedName()">
+                <label for="fname" class="leftBars">Enter Your First Name:</label>
+                <input type="text" class="form-control leftBars" id="fName" onfocusout="typedName()">
+                <label for="lname" class="leftBars">Now Your Last Name:</label>
+                <input type="text" class="form-control leftBars" id="lName" onfocusout="typedName()">
                 <script src="hw2Scripts.js"></script>
             </div>
             <div class="col-md-6">
-
+                <button type="button" class="w3-button w3-block w3-ripple w3-aqua w3-hover-purple" id="resultsButton" onclick="goBlack()">Click Here.. If you're ready!</button>
+                <script src="hw2Scripts.js"></script>
             </div>
         </div>
 
