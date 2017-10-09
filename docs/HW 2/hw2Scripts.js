@@ -15,8 +15,23 @@ function typedName() {
     else
         document.getElementById("resultsButton").style.display = "none";
 }
-function goBlack() {
-    var i;
-    for(i = 1; i > 0; i -= .0001)
-        $("body").css("opacity", i);
+fade = 1;
+interval = 0;
+function fadeOut() {
+    if(interval === 0)
+        interval = setInterval(fadeOut, 100);
+    else {
+    fade -= .1;
+    $("body").css("opacity", fade);
+    if(fade < 0) {
+        clearInterval(interval);
+        console.log(interval);
+        //$("body").css("opacity", "1");
+    }  
+}
+}
+function revertOpacity() {
+    clearInterval(interval);
+    fade = 1;
+    $("body").css("opacity", "1");
 }
