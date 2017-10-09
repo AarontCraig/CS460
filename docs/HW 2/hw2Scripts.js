@@ -21,14 +21,14 @@ function fadeOut() {
     if(interval === 0)
         interval = setInterval(fadeOut, 100);
     else {
-    fade -= .1;
-    $("body").css("opacity", fade);
-    if(fade < 0) {
-        clearInterval(interval);
-        console.log(interval);
-        //$("body").css("opacity", "1");
-    }  
-}
+        fade -= .1;
+        $("body").css("opacity", fade);
+        if(fade < 0) {
+            clearInterval(interval);
+            console.log(interval);
+            //$("body").css("opacity", "1");
+        }  
+    }
 }
 function revertOpacity() {
     clearInterval(interval);
