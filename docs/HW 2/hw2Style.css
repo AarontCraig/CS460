@@ -25,12 +25,15 @@ button
 }
 .jumbotron
 {
-
     background-image: url("Images/crystal-ball.jpg");
     background-color: #3B0B29;
     color: white;
     -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
     animation: mymove 50s infinite;
+}
+li
+{
+    color:white;
 }
 
 /* Standard syntax  - Got from W3Schools.org*/
