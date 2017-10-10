@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Aaron Craig's CS Portfolio</title>
+        <link rel="stylesheet" type="text/css" href="HW 1\My Website\bootstrap 3\css\bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="portfolio.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        </head>
+    <body>
+        <div class="container=fluid">
+            <h1 class="jumbotron text-center">Homework 2 Detailed</h1>
+                <div class="row content">
+                        <div class="col-sm-3 sidenav">
+                            <h4>Aaron's CS Portfolio</h4>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="https://github.com/AarontCraig/CS460/tree/master/docs/HW%201/My%20Website">My GitHub Repo</a></li>
+                                <li><a href="#">Homework 2 Detailed</a></li>
+                                <li><a href="hw1_rundown.html">Homework 1 Detailed</a></li>
+                            </ul>
+                            <br>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search Blog..">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    <!--Written portion here-->
+                    <div class="col-md-6">
+                        <p>For our second assignment we were tasked to learn javascript, jquery, and the best practices with GIT. I decided
+                            to do a silly project that involved a website where the user can type in their name and receive a guess at their
+                            future. (I take no responsibility for what anyone does with that information). Along the way I learned a lot about
+                            javascript and jquery. I already knew most everything about GIT, branching, merging, etc.. But it was still good
+                            practice for me.
+                        </p>
+                        <ol class="rundown">
+                            <li>The first thing I did was to create a new branch on my github website. I did this using the git commands:
+                                <br><code>git branch -b hw2</code>
+                                <br><code>git checkout hw2</code>
+                                <br>And then I began working on that branch, pushing changes, creating files, all without affecting my main
+                                branch. Source control is truly amazing, and I wil be using it in all future projects, for almost any class
+                                I have.
+                            </li>
+                            <li>
+                                Up next was the website. The first idea that came to my mind was a fortune telling website of some kind. A place
+                                where the user can put in their name, maybe some other information, and then I return a "fortune" based on that
+                                infortmation from them. It was meant to be silly and funny, and to get me familiar with the basics of javascript
+                                and jquery; which it did a great job at. I learned to code in a new language, using code like this:
+                                <br><xmp>
+                                        function clickMeButton() {
+                                            var input = document.getElementsByClassName("leftBars");
+                                            var i;
+                                                for(i = 0; i < input.length; ++i) {
+                                                    input[i].style.display = "block";
+                                                }
+                                        }
+                                    </xmp><br>
+                                    It was really thrilling to have my website come alive at clicks and input from the user.
+                            </li>
+                            <li>
+                                Through a lot of research and trial and error, I eventually got the website up and running to my satisfaction.
+                                Probably the most difficult part of it was getting it to fade out of existance slowly, and then come back to life.
+                                The code to do that, looked like this:
+                                <br><xmp>
+                                        interval = 0;
+                                        function revertOpacity() {
+                                            clearInterval(interval);
+                                            fade = 1;
+                                            $("body").css("opacity", "1");
+                                            //Clear all the other elements
+                                            $(".leftBars, #resultsButton, #dareButton").css("display", "none");
+                                            x = document.getElementById("header");
+                                            x.innerHTML = "Now the results!";
+                                            $("#header").css("color", "Red");
+                                            fillResultsDiv();
+                                        }
+                                </xmp><br>
+                                It took a lot of effort and confusion on my part, but eventually it got working correctly.
+                            </li>
+                            <li>
+                                And then lastly, I created the cheesy fortune results for the user. The code for that is incredibly simple,
+                                but I did use a function to get the current date and time, teaching me to how use data built into the DOM:
+                                <br><xmp>
+                                        function fillResultsDiv() {
+                                            list = $("#resultsList");
+                                            var m = "m";
+                                            //Set first element from different choices
+                                            if(fName.value.length <= 4)
+                                                list.html("<li>You will live a short life</li>");
+                                            else if(fName.value.length > 4)
+                                                list.html("<li>You will live a long life</li>");
+                                            //Set second element
+                                            if(String(lName).charCodeAt(0) < m.charCodeAt(0))
+                                                list.append("<li>You will get rich soon</li>");
+                                            else if(String(lName).charCodeAt(0) >= m.charCodeAt(0))
+                                                list.append("<li>You won't be making much money in your life</li>");
+                                            //Set last element
+                                            var d = new Date();
+                                            if((d.getTime() % 2) === 0)
+                                                list.append("<li>You'll find your soulmate soon</li>");
+                                            else
+                                                list.append("<li>Good luck being happy!</li>");
+                                        }
+                                </xmp><br>
+                                I'm proud of what I made. If you'd like to check it out and get your fortune, wander on over to <a href="HW 2\index.html">my website</a>.
+                            </li>
+                    </div>
+                </div>
+        </div>
+    </body>
+</html>
