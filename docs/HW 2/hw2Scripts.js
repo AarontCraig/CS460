@@ -18,7 +18,6 @@ function typedName() {
         document.getElementById("resultsButton").style.display = "none";
 }
 fade = 1;
-interval = 0;
 function fadeOut() {
     if(interval === 0)
         interval = setInterval(fadeOut, 100);
@@ -30,6 +29,7 @@ function fadeOut() {
         }  
     }
 }
+interval = 0;
 function revertOpacity() {
     clearInterval(interval);
     fade = 1;
