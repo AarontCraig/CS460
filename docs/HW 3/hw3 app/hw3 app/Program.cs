@@ -50,7 +50,7 @@ namespace hw3_app
             Double a, b, c, number;
 
             fullString = input;
-            subStrings = fullString.Split();
+            subStrings = fullString.Split(); //Split the string into an array
             foreach (String str in subStrings )
             {
                 if (Double.TryParse(str, out number) == true) //If it's a number, push it onto the stack
