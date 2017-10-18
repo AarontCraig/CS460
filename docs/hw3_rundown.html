@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Aaron Craig's CS Portfolio</title>
+        <link rel="stylesheet" type="text/css" href="HW 1\My Website\bootstrap 3\css\bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="portfolio.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        </head>
+    <body>
+        <div class="container=fluid">
+            <h1 class="jumbotron text-center">Homework 3 Detailed</h1>
+                <div class="row content">
+                        <div class="col-sm-3 sidenav">
+                            <h4>Aaron's CS Portfolio</h4>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="https://github.com/AarontCraig/CS460/tree/master/docs/HW%201/My%20Website">My GitHub Repo</a></li>
+                                <li><a href="#">Homework 3 Detailed</a></li>
+                                <li><a href="hw2_rundown.html">Homework 2 Detailed</a></li>
+                                <li><a href="hw1_rundown.html">Homework 1 Detailed</a></li>
+                            </ul>
+                            <br>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search Blog..">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    <!--Written portion here-->
+                    <div class="col-md-6">
+                        <p>In this assignment I learned to code in C#. I learned a lot of the basics, included using namespaces, naming
+                            conventions, and using the debugger. I found myself confused at first, but then I fell in love with the language.
+                            It seems really fantastic and I am excited to learn more and use it more often.
+                        </p>
+                        <ol class="rundown">
+                            <li>The first thing I did was to create a new branch on my github website. I did this using the git commands:
+                                <br><code>git branch -b hw3</code>
+                                <br><code>git checkout hw3</code>
+                                <br>And then I began working on that branch, pushing changes, creating files, all without affecting my main
+                                branch. Source control is truly amazing, and I wil be using it in all future projects, for almost any class
+                                I have.
+                            </li>
+                            <li>
+                                Secondly I opened up the Java program Calculator and looked it over. There were 4 files and a fair bit of code,
+                                I tried to understand how it worked, ran the calculator a couple of times, and got a good feeling for the program.
+                            </li>
+                            <li>
+                                Then I began working in Visual Studio 2017.
+                                <br><img src="HW 3\Images\VS Screenshot.PNG" height="400" width="750" alt="Screenshot of website"><br>
+                                I've used Visual Studio in the past, but never too much. I found myself a little intimidated, as it's a mature
+                                program with a lot of menus and options. However, I was able to get a hold of the basics fairly quickly and
+                                found myself a good workflow.
+                            </li>
+                            <li>
+                                Up next came the actual translation of the code from Java to C#. I started with the interface and translated it
+                                into C# that ended up looking like this: 
+                                <xmp>
+                                        public interface IStackADT
+                                        {
+                                            /// <summary>
+                                            /// Push an item onto the top of the stack. Pushing an object that 
+                                            /// doesn't exist should result in an error and should not succeed.
+                                            /// Pushing an object that is not an item should result in an error.
+                                            /// This operation returns a reference (pointer or link, but not a copy)
+                                            /// to the item pushed so that an anonymous object can be pushed and then used.
+                                            /// </summary>
+                                            /// <param name="newItem">The object to push onto the top of the stack. Should not be null</param>
+                                            /// <returns>A reference to the object that was pushed, or null if newItem == null</returns>
+                                            Object Push(Object newItem);
+                                        
+                                            /// <summary>
+                                            /// Remove and return the top item on the stack. This operation should 
+                                            /// result in an error if the stack is empty.Returns a reference to the
+                                            /// item removed.
+                                            /// </summary>
+                                            /// <returns>A reference to the item currently on the top of the stack or null if the stack is empty</returns>
+                                            Object Pop();
+                                        
+                                            /// <summary>
+                                            /// Return the top item but do not remove it. Generally should result in 
+                                            /// an error if the stack is empty.An acceptable alternative is to return 
+                                            /// something which the user can use to check to see if the stack was in fact empty.
+                                            /// </summary>
+                                            /// <returns></returns>
+                                            Object Peek();
+                                        
+                                            /// <summary>
+                                            /// Query the stack to see if it is empty or not. Cannot produce an error.
+                                            /// </summary>
+                                            /// <returns>True if the stack is empty, false otherwise</returns>
+                                            Boolean IsEmpty();
+                                        
+                                            /// <summary>
+                                            /// Reset the stack by emptying it. The exact technique used to clear 
+                                            /// the stack is up to the implementor.The user should pay attention to what 
+                                            /// this behavior is.
+                                            /// </summary>
+                                            void Clear();
+                                </xmp>>
+                                I learned how to use XML comments, which are fabulous. They allow me to see exactly what that function
+                                does when I call it later on.
+                            </li>
+                            <li>
+                                Once I began to get comfortable with C#, the translation came along well. The only trouble I had
+                                was when I needed to translate the Java Scanner class into C#, since C# doesn't have anything
+                                exactly like it. I ended up coding this:
+                                <xmp>
+                                        String fullString;
+                                        String[] subStrings;
+                                        Double a, b, c, number;
+                            
+                                        fullString = input;
+                                        subStrings = fullString.Split(); //Split the string into an array
+                                        foreach (String str in subStrings )
+                                        {
+                                            if (Double.TryParse(str, out number) == true) //If it's a number, push it onto the stack
+                                            {
+                                                stack.Push(number);
+                                            }
+                                </xmp>
+                                After that got solved, I got my calculator up and running with the help of the debugger, which is 
+                                a great tool and very easy to use.
+                            </li>
+                            <p>I really enjoyed learning C#, it's a great language that's similar to what I already know, which makes 
+                                it even easier to get into it.
+                            </p>
+                    </div>
+                </div>
+        </div>
+    </body>
+</html>
