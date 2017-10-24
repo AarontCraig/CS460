@@ -3,5 +3,15 @@
     ViewBag.Title = "Page_1";
 }
 
-<h2>This is Page 1</h2>
+<h2 class="jumbotron">This is Page 1</h2>
+<div class="row">
+    <form mathod="post">
+        <label for="favMovie">What's your favorite movie?</label>
+        <input type="text" name="favMovie" value="" />
+        <label for="favColor">How about your favorite color?</label>
+        <input type="text" name="favColor" value="" />
+        <input type="submit" name="submit" value="Submit" />
+    </form>
+</div>
+    <p>It's great that you love @ViewBag.movie and @ViewBag.color cuz I do, too!</p>
 
