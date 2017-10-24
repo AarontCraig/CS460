@@ -30,6 +30,11 @@ namespace HW4_Test2.Controllers
             return View();
         }
 
+        public ActionResult Page_1()
+        {
+            return View();
+        }
+
         // GET /home/foo == home/about
         public ActionResult Foo()
         {
