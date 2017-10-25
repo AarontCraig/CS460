@@ -9,15 +9,10 @@ namespace HW4_Test2.Controllers
 {
     public class HW4Controller : Controller
     {
-        // GET: HW4
         public ActionResult Page_1()
         {
-            return View();
-        }
-
-        public ActionResult Page_1_Results()
-        {
-            string movie = Request.Form["favMovie"];
+            string movie = Request.Form["FavMovie"];
+            Debug.WriteLine(movie);
             ViewBag.movie = movie;
             string color = Request.Form["favColor"];
             ViewBag.color = color;
