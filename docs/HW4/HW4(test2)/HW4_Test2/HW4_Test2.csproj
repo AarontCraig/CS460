@@ -204,6 +204,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\HW4\Page_1.cshtml" />
     <Content Include="Views\HW4\Page_2.cshtml" />
+    <Content Include="Views\HW4\Awesome_Calculator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

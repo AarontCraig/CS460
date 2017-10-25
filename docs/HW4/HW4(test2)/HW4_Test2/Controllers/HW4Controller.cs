@@ -72,5 +72,10 @@ namespace HW4_Test2.Controllers
             ViewBag.newTemp = CalculateTemp(form.Get("type"), form.Get("temp"));
             return View();
         }
+
+        public ActionResult Awesome_Calculator()
+        {
+            return View();
+        }
     }
 }
