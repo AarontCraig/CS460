@@ -11,14 +11,7 @@
     <input type="text" name="type" value="" />
     <input type="submit" name="submit" value="Submit" />
 </form>
-@if (ViewBag.temp != null && ViewBag.type != null)
+@if (ViewBag.newTemp != null)
 {
-    if(ViewBag.temp is double)
-    {
-        <p>Your converted temp is: @ViewBag.newTemp</p>
-    }
-}
-@if(ViewBag.temp == null || ViewBag.type == null)
-{
-    <p>I can't work with nothing.</p>
+    <p>Your converted temp is: @ViewBag.newTemp</p>
 }

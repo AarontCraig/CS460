@@ -24,12 +24,12 @@ namespace HW4_Test2.Controllers
                 }
                 catch (FormatException)
                 {
-                    ViewBag.newTemp = 0;
+                    ViewBag.newTemp = null;
                     return View();
                 }
                 catch (OverflowException)
                 {
-                    ViewBag.newTemp = 0;
+                    ViewBag.newTemp = null;
                     return View();
                 }
 
@@ -45,7 +45,7 @@ namespace HW4_Test2.Controllers
                 }
                 else
                 {
-                    ViewBag.newTemp = 0;
+                    ViewBag.newTemp = null;
                     return View();
                 }
 
