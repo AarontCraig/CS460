@@ -73,8 +73,17 @@ namespace HW4_Test2.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Awesome_Calculator()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Awesome_Calculator(int? age, int? gamesBeaten)
+        {
+            Debug.WriteLine(age);
+            Debug.WriteLine(gamesBeaten);
             return View();
         }
     }
