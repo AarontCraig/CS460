@@ -5,9 +5,25 @@
 
 <h2>Let's figure out how awesome you are</h2>
 <form method="post">
-    <label for="name">What is your name?</label>
+    @if (ViewBag.name == null)
+    {
+        <p style="color: red">*Please input a valid answer</p>
+        <label style="color: red" for="name">What is your name?</label>
+    }
+    else
+    {
+        <label for="name">What is your name?</label>
+    }
     <input type="text" name="name" value="" required/>
-    <label for="age">How old are you?</label>
+    @if (ViewBag.age == null)
+    {
+        <p style="color: red">*Please input a valid answer</p>
+        <label style="color: red" for="age">How old are you?</label>
+    }
+    else
+    {
+        <label for="age">How old are you?</label>
+    }
     <input type="number" name="age" value="" required/>
     <label for="gamesBeaten">How many Dark Souls games have you beaten?</label>
     <input type="number" name="gamesBeaten" value="" required/>

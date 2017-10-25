@@ -77,14 +77,37 @@ namespace HW4_Test2.Controllers
         [HttpGet]
         public ActionResult Awesome_Calculator()
         {
+            ViewBag.name = "";
+            ViewBag.age = "";
+            ViewBag.gamesBeaten = "";
             return View();
         }
 
         [HttpPost]
-        public ActionResult Awesome_Calculator(int? age, int? gamesBeaten)
+        public ActionResult Awesome_Calculator(string name, int? age, int? gamesBeaten)
         {
-            if (age == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //Error checking for all three types
+            try
+            {
+                Convert.ToDouble(name);
+                ViewBag.name = null;
+            }
+            catch
+            {
+                ViewBag.name = name;
+            }
+
+            if (age < 0 || age > 100)
+                ViewBag.age = null;
+            else
+                ViewBag.age = age;
+
+            if (gamesBeaten < 0 || gamesBeaten > 3)
+                ViewBag.gamesBeaten = null;
+            else
+                ViewBag.gamesBeaten = gamesBeaten;
+            //if (age == null)
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             return View();
         }
     }
