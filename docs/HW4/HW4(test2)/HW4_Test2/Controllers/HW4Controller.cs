@@ -9,10 +9,16 @@ namespace HW4_Test2.Controllers
 {
     public class HW4Controller : Controller
     {
+        public void calculateTemp(string type, string temp)
+        {
+            
+        }
         public ActionResult Page_1()
         {
             string type = Request.Form["type"];
             string temp = Request.Form["temp"];
+
+            calculateTemp(type, temp);
             if (type != null)
             {
                 Debug.WriteLine(type);
@@ -55,6 +61,19 @@ namespace HW4_Test2.Controllers
             }
             else
                 return View();
+        }
+
+        [HttpGet]
+        public ActionResult Page_2()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Page_2(FormCollection form)
+        {
+            Debug.WriteLine(form.Get("temp"));
+            return View();
         }
     }
 }
