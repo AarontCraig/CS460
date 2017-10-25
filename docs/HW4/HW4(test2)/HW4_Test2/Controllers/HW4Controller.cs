@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -82,8 +83,8 @@ namespace HW4_Test2.Controllers
         [HttpPost]
         public ActionResult Awesome_Calculator(int? age, int? gamesBeaten)
         {
-            Debug.WriteLine(age);
-            Debug.WriteLine(gamesBeaten);
+            if (age == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             return View();
         }
     }
