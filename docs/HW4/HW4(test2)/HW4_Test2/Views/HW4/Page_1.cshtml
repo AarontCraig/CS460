@@ -5,13 +5,20 @@
 
 <h2 class="jumbotron">This is Page 1</h2>
 <form method="post">
-    <label for="favMovie">What's your favorite movie?</label>
-    <input type="text" name="favMovie" value="" />
-    <label for="favColor">How about your favorite color?</label>
-    <input type="text" name="favColor" value="" />
+    <label for="temp">What's the temperature right now?</label>
+    <input type="text" name="temp" value="" />
+    <label for="type">In Celsius or Farhenheit?</label>
+    <input type="text" name="type" value="" />
     <input type="submit" name="submit" value="Submit" />
 </form>
-@if (ViewBag.movie != null)
+@if (ViewBag.temp != null && ViewBag.type != null)
 {
-    <p>It's great that you love @ViewBag.movie and @ViewBag.color cuz I do, too!</p>
+    if(ViewBag.temp is double)
+    {
+        <p>Your converted temp is: @ViewBag.newTemp</p>
+    }
+}
+@if(ViewBag.temp == null || ViewBag.type == null)
+{
+    <p>I can't work with nothing.</p>
 }

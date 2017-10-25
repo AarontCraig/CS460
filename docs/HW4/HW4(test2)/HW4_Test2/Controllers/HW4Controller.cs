@@ -11,14 +11,50 @@ namespace HW4_Test2.Controllers
     {
         public ActionResult Page_1()
         {
-            string movie = Request.Form["FavMovie"];
-            Debug.WriteLine(movie);
-            ViewBag.movie = movie;
-            string color = Request.Form["favColor"];
-            ViewBag.color = color;
+            string type = Request.Form["type"];
+            string temp = Request.Form["temp"];
+            if (type != null)
+            {
+                Debug.WriteLine(type);
+                //Pull the temp from the form and try to convert it to a double
+                double dTemp;
+                try
+                {
+                    dTemp = Convert.ToDouble(temp);
+                }
+                catch (FormatException)
+                {
+                    ViewBag.newTemp = 0;
+                    return View();
+                }
+                catch (OverflowException)
+                {
+                    ViewBag.newTemp = 0;
+                    return View();
+                }
 
-            Debug.WriteLine($"{movie} and {color}");
-            return View();
+
+                double newTemp;
+                if (type.StartsWith("c") || type.StartsWith("C"))
+                {
+                    newTemp = (dTemp * 1.8) + 32;
+                }
+                else if (type.StartsWith("f") || type.StartsWith("F"))
+                {
+                    newTemp = (dTemp - 32) * .5556;
+                }
+                else
+                {
+                    ViewBag.newTemp = 0;
+                    return View();
+                }
+
+                ViewBag.newTemp = newTemp;
+
+                return View();
+            }
+            else
+                return View();
         }
     }
 }
