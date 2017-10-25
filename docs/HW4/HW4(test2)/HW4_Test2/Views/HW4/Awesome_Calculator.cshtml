@@ -17,7 +17,7 @@
     <input type="text" name="name" value="" required/>
     @if (ViewBag.age == null)
     {
-        <p style="color: red">*Please input a valid answer</p>
+        <p style="color: red">*No You're not. Try again.</p>
         <label style="color: red" for="age">How old are you?</label>
     }
     else
@@ -25,7 +25,20 @@
         <label for="age">How old are you?</label>
     }
     <input type="number" name="age" value="" required/>
-    <label for="gamesBeaten">How many Dark Souls games have you beaten?</label>
+    @if (ViewBag.gamesBeaten == null)
+    {
+        <p style="color: red">*There aren't that many DS games!!</p>
+        <label style="color: red" for="gamesBeaten">How many Dark Souls games have you beaten?</label>
+    }
+    else
+    {
+        <label for="gamesBeaten">How many Dark Souls games have you beaten?</label>
+    }
     <input type="number" name="gamesBeaten" value="" required/>
     <input type="submit" name="submit" value="Submit" />
 </form>
+
+@if (ViewBag.name != "" && ViewBag.age != null && ViewBag.gamesBeaten != null)
+{
+    <p>Alrighty @ViewBag.name! Your awesomeness is level @ViewBag.aweLevel, Congrats!!</p>
+}

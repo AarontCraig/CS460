@@ -107,7 +107,10 @@ namespace HW4_Test2.Controllers
             else
                 ViewBag.gamesBeaten = gamesBeaten;
             //if (age == null)
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            //Discern awewsomeness level
+            ViewBag.aweLevel = (gamesBeaten * 10000) - (age * 50);
             return View();
         }
     }
