@@ -1,0 +1,16 @@
+﻿CREATE TABLE Users
+(
+	[ID] INT NOT NULL,
+	[DriversLIcense] INT NOT NULL,
+    [FirstName] NVARCHAR(64) NOT NULL, 
+    [MiddleName] NVARCHAR(128) NOT NULL, 
+    [LastName] NVARCHAR(128) NOT NULL, 
+	[DOB] DateTime NOT NULL, 
+	[UserAddress] NVARCHAR(128) NOT NULL,
+    [City] NVARCHAR(128) NOT NULL, 
+    [UserState] NVARCHAR(128) NOT NULL, 
+    [ZIP] INT NOT NULL,
+	[County] NVARCHAR NOT NULL,
+	[UpdateVoter] INT NOT NULL,
+	CONSTRAINT [PK_dbo.Users] PRIMARY KEY CLUSTERED (ID ASC)
+);
