@@ -1,1 +1,1 @@
-﻿DROP DATABASE UserDatabase;
+DROP TABLE Users
