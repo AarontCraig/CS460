@@ -6,9 +6,9 @@ using System.Data.Entity;
 
 namespace Homework5.DAL
 {
-    public class UserContext : DbContext 
+    public class UserContext : UserContext 
     {
-        public UserContext() : base("name=OurDBContext")
+        public UserContext() : base("name=UserContext")
         { }
 
         public virtual DbSet<UserContext> Users { get; set; }
