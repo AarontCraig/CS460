@@ -4,14 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Primary Database List</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table-bordered">
     <tr>
-        <th>
+        <th style="padding: 25px" style="padding-bottom: 10px">
             @Html.DisplayNameFor(model => model.DriversLicense)
         </th>
         <th>
