@@ -47,7 +47,7 @@ namespace Homework5.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,DriversLicense,FirstName,MiddleName,LastName,DOB,UserAddress,UserState,ZIP,County,UpdateVoter")] User user)
+        public ActionResult Create([Bind(Include = "ID,DriversLicense,FirstName,MiddleName,LastName,DOB,UserAddress,City,UserState,ZIP,County,UpdateVoter")] User user)
         {
             if (ModelState.IsValid)
             {

@@ -9,38 +9,37 @@ namespace Homework5.Models
 {
     public class User
     {
-        [Required]
         public int ID { get; set; }
 
-        [Required]
+        [Display(Name = "Drivers License #")]
         public int DriversLicense { get; set; }
 
-        [Required, StringLength(64)]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
-        [Required, StringLength(128)]
+        [Display(Name = "Middle Name")]
         public string MiddleName { get; set; }
 
-        [Required, StringLength(128)]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Required]
+        [Display(Name = "Date of Birth")]
         public DateTime DOB { get; set; }
 
-        [Required, StringLength(128)]
+        [Display(Name = "Street Address")]
         public string UserAddress { get; set; }
 
-        [Required, StringLength(128)]
+        public string City { get; set; }
+
+        [Display(Name = "State")]
         public string UserState { get; set; }
 
-        [Required]
+        [Display(Name = "ZIP Code")]
         public int ZIP { get; set; }
 
-        [Required, StringLength(128)]
         public string County { get; set; }
 
-        [Required]
+        [Display(Name = "Update your voting preferences?")]
         public int UpdateVoter { get; set; }
     }
 }
