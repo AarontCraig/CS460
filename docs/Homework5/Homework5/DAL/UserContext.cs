@@ -12,6 +12,6 @@ namespace Homework5.DAL
         public UserContext() : base("name=OurDBContext")
         { }
 
-        public virtual DbSet<UserContext> Users { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }
