@@ -36,101 +36,85 @@
                         </div>
                     <!--Written portion here-->
                     <div class="col-md-6">
-                        <p>In this assignment I learned to code in C#. I learned a lot of the basics, included using namespaces, naming
-                            conventions, and using the debugger. I found myself confused at first, but then I fell in love with the language.
-                            It seems really fantastic and I am excited to learn more and use it more often.
+                        <p>In this assignment I learned about the MVC paradigm, and how to transfer data around using a web browser.
+                            It's not the most elegant way of moving data, but there are reasons to use it that way. I learned that I 
+                            can manipulate data that the user gives me, and then change the page they're looking at with Razor code!
                         </p>
                         <ol class="rundown">
                             <li>The first thing I did was to create a new branch on my github website. I did this using the git commands:
-                                <br><code>git branch -b hw3</code>
-                                <br><code>git checkout hw3</code>
+                                <br><code>git branch -b hw4</code>
+                                <br><code>git checkout hw4</code>
                                 <br>And then I began working on that branch, pushing changes, creating files, all without affecting my main
-                                branch. Source control is truly amazing, and I wil be using it in all future projects, for almost any class
-                                I have.
+                                branch. For this project, I also created subbranches based off hw4, such as hw4_home, and one for each page
+                                as I worked. At the end, I merged them all together.
                             </li>
                             <li>
-                                Secondly I opened up the Java program Calculator and looked it over. There were 4 files and a fair bit of code,
-                                I tried to understand how it worked, ran the calculator a couple of times, and got a good feeling for the program.
+                                To begin the coding process, I created the controller I'd be using. The controller would handle all requests for
+                                my webpages, how data was handled, and the functions I'd eventually create.
+                                <img src="HW4\Images\vs_project.PNG" height="400" width="600">
                             </li>
                             <li>
-                                Then I began working in Visual Studio 2017.
-                                <br><img src="HW 3\Images\VS Screenshot.PNG" height="400" width="750" alt="Screenshot of website"><br>
-                                I've used Visual Studio in the past, but never too much. I found myself a little intimidated, as it's a mature
-                                program with a lot of menus and options. However, I was able to get a hold of the basics fairly quickly and
-                                found myself a good workflow.
+                                Once the controller was made, I needed to create a view for the first page. It was to be a temperature converter,
+                                to do either Farenheit to Celsius, or vice versa. I added the page in my controller so I could access it, then
+                                set up the page for how it would look with labels and inputs.
+                                <br><br>
+                                On this first page, I was to take the information as query strings and extract it and then do the calculation. I 
+                                did that successfully and displayed the result to the user.
+                                <img src="HW4\Images\Page_1.PNG" height="200" width="600">
                             </li>
                             <li>
-                                Up next came the actual translation of the code from Java to C#. I started with the interface and translated it
-                                into C# that ended up looking like this: 
+                                Then came page 2, when I needed to use the same code but transfer the data in a new way. I needed to use HttpGet
+                                and HttpPost. To simplify the conversion, I made it into a function that I called for both pages, and then 
+                                created the ActionResult calls for the get and post.
+                                <img src="HW4\Images\Page_2.PNG" height="200" width="600">
+                            </li>
+                            <li>
+                                Next I began brainstorming what to do. I needed to create a webpage that took user information, and then performed
+                                some sort of calculation on it. The suggestion was for an interest calculator, which I actually just learned the 
+                                formulas for in my math class, but I wanted to do something unique instead. As I'm currently playing Dark Souls 3,
+                                it came to my mind to make a calculator that took into account the users age and number of games completed, to give
+                                them an awesome ranking. The code looked like this:
+                                <br>
                                 <xmp>
-                                        public interface IStackADT
+                                    [HttpPost]
+                                    public ActionResult Awesome_Calculator(string name, int? age, int? gamesBeaten)
+                                    {
+                                        //Error checking for all three types
+                                        try
                                         {
-                                            /// <summary>
-                                            /// Push an item onto the top of the stack. Pushing an object that 
-                                            /// doesn't exist should result in an error and should not succeed.
-                                            /// Pushing an object that is not an item should result in an error.
-                                            /// This operation returns a reference (pointer or link, but not a copy)
-                                            /// to the item pushed so that an anonymous object can be pushed and then used.
-                                            /// </summary>
-                                            /// <param name="newItem">The object to push onto the top of the stack. Should not be null</param>
-                                            /// <returns>A reference to the object that was pushed, or null if newItem == null</returns>
-                                            Object Push(Object newItem);
-                                        
-                                            /// <summary>
-                                            /// Remove and return the top item on the stack. This operation should 
-                                            /// result in an error if the stack is empty.Returns a reference to the
-                                            /// item removed.
-                                            /// </summary>
-                                            /// <returns>A reference to the item currently on the top of the stack or null if the stack is empty</returns>
-                                            Object Pop();
-                                        
-                                            /// <summary>
-                                            /// Return the top item but do not remove it. Generally should result in 
-                                            /// an error if the stack is empty.An acceptable alternative is to return 
-                                            /// something which the user can use to check to see if the stack was in fact empty.
-                                            /// </summary>
-                                            /// <returns></returns>
-                                            Object Peek();
-                                        
-                                            /// <summary>
-                                            /// Query the stack to see if it is empty or not. Cannot produce an error.
-                                            /// </summary>
-                                            /// <returns>True if the stack is empty, false otherwise</returns>
-                                            Boolean IsEmpty();
-                                        
-                                            /// <summary>
-                                            /// Reset the stack by emptying it. The exact technique used to clear 
-                                            /// the stack is up to the implementor.The user should pay attention to what 
-                                            /// this behavior is.
-                                            /// </summary>
-                                            void Clear();
-                                </xmp>>
-                                I learned how to use XML comments, which are fabulous. They allow me to see exactly what that function
-                                does when I call it later on.
-                            </li>
-                            <li>
-                                Once I began to get comfortable with C#, the translation came along well. The only trouble I had
-                                was when I needed to translate the Java Scanner class into C#, since C# doesn't have anything
-                                exactly like it. I ended up coding this:
-                                <xmp>
-                                        String fullString;
-                                        String[] subStrings;
-                                        Double a, b, c, number;
+                                            Convert.ToDouble(name);
+                                            ViewBag.name = null;
+                                        }
+                                        catch
+                                        {
+                                            ViewBag.name = name;
+                                        }
                             
-                                        fullString = input;
-                                        subStrings = fullString.Split(); //Split the string into an array
-                                        foreach (String str in subStrings )
-                                        {
-                                            if (Double.TryParse(str, out number) == true) //If it's a number, push it onto the stack
-                                            {
-                                                stack.Push(number);
-                                            }
+                                        if (age < 0 || age > 100)
+                                            ViewBag.age = null;
+                                        else
+                                            ViewBag.age = age;
+                            
+                                        if (gamesBeaten < 0 || gamesBeaten > 3)
+                                            ViewBag.gamesBeaten = null;
+                                        else
+                                            ViewBag.gamesBeaten = gamesBeaten;
+                                        //if (age == null)
+                                        //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                            
+                                        //Discern awewsomeness level
+                                        ViewBag.aweLevel = (gamesBeaten * 10000) - (age * 50);
+                                        return View();
                                 </xmp>
-                                After that got solved, I got my calculator up and running with the help of the debugger, which is 
-                                a great tool and very easy to use.
+                                And the result of the page, when their awesomenss was calculated looked like this:
+                                <img src="HW4\Images\form_filled_out.PNG" height="400" width="600">
+                                <br><br>
                             </li>
-                            <p>I really enjoyed learning C#, it's a great language that's similar to what I already know, which makes 
-                                it even easier to get into it.
+                            <p>
+                                All in all, I learned a lot about creating web pages, web apps, and passing data in a browser.
+                                It's something I'd never done before, so it was a litle difficult, but I feel I learned a lot
+                                and am a better developer because of it. You can get the app <a href="https://github.com/AarontCraig/CS460/tree/hw4/docs/HW4/HW4(test2)">here on my github</a> as long as 
+                                you have Visual Studio 2017 installed.
                             </p>
                     </div>
                 </div>
