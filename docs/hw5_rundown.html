@@ -36,101 +36,81 @@
                         </div>
                     <!--Written portion here-->
                     <div class="col-md-6">
-                        <p>In this assignment I learned to code in C#. I learned a lot of the basics, included using namespaces, naming
-                            conventions, and using the debugger. I found myself confused at first, but then I fell in love with the language.
-                            It seems really fantastic and I am excited to learn more and use it more often.
+                        <p>
+                            For this homework, I needed to create a new database, link it in my MVC app, and be able to add, delete, and view
+                            everthing in that DB on my website. This homework was the most difficult for me yet, I ran into so many errors,
+                            bugs, and wrung my hair until I was almost bald. But in the end, with help from other students and my professor,
+                            I was able to get it up and running.
                         </p>
                         <ol class="rundown">
                             <li>The first thing I did was to create a new branch on my github website. I did this using the git commands:
-                                <br><code>git branch -b hw3</code>
-                                <br><code>git checkout hw3</code>
+                                <br><code>git branch -b hw5</code>
+                                <br><code>git checkout hw5</code>
                                 <br>And then I began working on that branch, pushing changes, creating files, all without affecting my main
-                                branch. Source control is truly amazing, and I wil be using it in all future projects, for almost any class
-                                I have.
+                                branch. At the end, I merged them all together. This was the only part I didn't have any problems with.
                             </li>
                             <li>
-                                Secondly I opened up the Java program Calculator and looked it over. There were 4 files and a fair bit of code,
-                                I tried to understand how it worked, ran the calculator a couple of times, and got a good feeling for the program.
+                                After switching to my branch, I downloaded the example project from class and attempted to get it working. However,
+                                I was gone the day we went over setting up a DB in VS and so I didn't know anything about connection strings, or 
+                                how to connect to the DB, so I struggled for a long time over this.
+                                <br><br>
+                                I created my own project and attempted to connect to it, but it was all for nothing without the correct knowledge.
+                                I made my SQL script, but didn't connect to my DB, I was on master, which was doing nothing for me. Once I finally
+                                understood more about connections, I was able to discern how to switch DB's and which one I needed to be on.
+                                <img src="Homework5\Images\connect_db.PNG" height="400" width="600">
                             </li>
                             <li>
-                                Then I began working in Visual Studio 2017.
-                                <br><img src="HW 3\Images\VS Screenshot.PNG" height="400" width="750" alt="Screenshot of website"><br>
-                                I've used Visual Studio in the past, but never too much. I found myself a little intimidated, as it's a mature
-                                program with a lot of menus and options. However, I was able to get a hold of the basics fairly quickly and
-                                found myself a good workflow.
-                            </li>
-                            <li>
-                                Up next came the actual translation of the code from Java to C#. I started with the interface and translated it
-                                into C# that ended up looking like this: 
+                                Then I made my User.cs Model. Here, I set up how VS should get the information from the database, and how to format it
+                                on the website.
                                 <xmp>
-                                        public interface IStackADT
+                                    namespace Homework5.Models
+                                    {
+                                        public class User
                                         {
-                                            /// <summary>
-                                            /// Push an item onto the top of the stack. Pushing an object that 
-                                            /// doesn't exist should result in an error and should not succeed.
-                                            /// Pushing an object that is not an item should result in an error.
-                                            /// This operation returns a reference (pointer or link, but not a copy)
-                                            /// to the item pushed so that an anonymous object can be pushed and then used.
-                                            /// </summary>
-                                            /// <param name="newItem">The object to push onto the top of the stack. Should not be null</param>
-                                            /// <returns>A reference to the object that was pushed, or null if newItem == null</returns>
-                                            Object Push(Object newItem);
-                                        
-                                            /// <summary>
-                                            /// Remove and return the top item on the stack. This operation should 
-                                            /// result in an error if the stack is empty.Returns a reference to the
-                                            /// item removed.
-                                            /// </summary>
-                                            /// <returns>A reference to the item currently on the top of the stack or null if the stack is empty</returns>
-                                            Object Pop();
-                                        
-                                            /// <summary>
-                                            /// Return the top item but do not remove it. Generally should result in 
-                                            /// an error if the stack is empty.An acceptable alternative is to return 
-                                            /// something which the user can use to check to see if the stack was in fact empty.
-                                            /// </summary>
-                                            /// <returns></returns>
-                                            Object Peek();
-                                        
-                                            /// <summary>
-                                            /// Query the stack to see if it is empty or not. Cannot produce an error.
-                                            /// </summary>
-                                            /// <returns>True if the stack is empty, false otherwise</returns>
-                                            Boolean IsEmpty();
-                                        
-                                            /// <summary>
-                                            /// Reset the stack by emptying it. The exact technique used to clear 
-                                            /// the stack is up to the implementor.The user should pay attention to what 
-                                            /// this behavior is.
-                                            /// </summary>
-                                            void Clear();
-                                </xmp>>
-                                I learned how to use XML comments, which are fabulous. They allow me to see exactly what that function
-                                does when I call it later on.
-                            </li>
-                            <li>
-                                Once I began to get comfortable with C#, the translation came along well. The only trouble I had
-                                was when I needed to translate the Java Scanner class into C#, since C# doesn't have anything
-                                exactly like it. I ended up coding this:
-                                <xmp>
-                                        String fullString;
-                                        String[] subStrings;
-                                        Double a, b, c, number;
-                            
-                                        fullString = input;
-                                        subStrings = fullString.Split(); //Split the string into an array
-                                        foreach (String str in subStrings )
-                                        {
-                                            if (Double.TryParse(str, out number) == true) //If it's a number, push it onto the stack
-                                            {
-                                                stack.Push(number);
-                                            }
+                                            public int ID { get; set; }
+                                    
+                                            [Display(Name = "Drivers License #")]
+                                            public int DriversLicense { get; set; }
+                                    
+                                            [Display(Name = "First Name")]
+                                            public string FirstName { get; set; }
+                                    
+                                            [Display(Name = "Middle Name")]
+                                            public string MiddleName { get; set; }
+                                    
+                                            [Display(Name = "Last Name")]
+                                            public string LastName { get; set; }
+
+                                            .....
                                 </xmp>
-                                After that got solved, I got my calculator up and running with the help of the debugger, which is 
-                                a great tool and very easy to use.
+                                I altered the display property for many of them, so in the form they would show up properly.
                             </li>
-                            <p>I really enjoyed learning C#, it's a great language that's similar to what I already know, which makes 
-                                it even easier to get into it.
+                            <li>
+                                I thought things were going to be easy sailing from there, but I was dead wrong. Auto correct had
+                                changed one tiny thing when I made my UserContext.cs file, and it resulted in me not being able to auto
+                                generate any my controllers or views, which are fairly important. My professor eventually found this error,
+                                and with it fixed, I was able to proceed smoothly.
+                            </li>
+                            <li>
+                                Finally I got my index page created and my database connected to it. It displayed the users that I'd added from my
+                                SQL file.
+                                <img src="Homework5\Images\Index_Picture.PNG" height="400" width="600">
+                            </li>
+                            <li>
+                                From there, it was pretty easy to get the create page set up, since Visual Studio helped me generate the page
+                                and fill it up. I added some design work to it to make it look better.
+                                <img src="Homework5\Images\New_User_Screenshot.PNG" height="400" width="600">
+                            </li>
+                            <li>
+                                And lastly, my index was updated with the new user I created, showing that my database was linked properly
+                                and I could both fetch data from it and push data to it.
+                                <image src="Homework5\Images\new_user_added.jpg" height="400" width="600">
+                                    <br>
+                            </li>
+                            <p>
+                                I had nothing but problems working through this homework. I was constantly frustrated and wanted to give up.
+                                But through it all, I learned a lot. I was then able to take that knowledge and help out my classmates when they
+                                asked questions as well, since I knew what they were going through and how to fix it.
                             </p>
                     </div>
                 </div>
