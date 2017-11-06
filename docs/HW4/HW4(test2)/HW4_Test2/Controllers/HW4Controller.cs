@@ -10,12 +10,14 @@ namespace HW4_Test2.Controllers
 {
     public class HW4Controller : Controller
     {
+        //Function for calculating temperature for the first two pages
         public double CalculateTemp(string type, string temp)
         {
             if (type != null)
             {
                 //Pull the temp from the form and try to convert it to a double
                 double dTemp = 0;
+                //Check to see if what the function is given is actually a number
                 try
                 {
                     dTemp = Convert.ToDouble(temp);
@@ -28,7 +30,7 @@ namespace HW4_Test2.Controllers
                 {
                     return 0.12345;
                 }
-
+                //Convert the temperature defending on what type the user types in
                 double newTemp;
                 if (type.StartsWith("c") || type.StartsWith("C"))
                 {
@@ -40,12 +42,12 @@ namespace HW4_Test2.Controllers
                     newTemp = (dTemp - 32) * .5556;
                     return newTemp;
                 }
-                else
+                else //Returns something invalid, since it can't be null
                 {
                     return 0.12345;
                 }
             }
-            else
+            else //My specific number, which is actually symbalizing a null
             {
                 return 0.12345;
             }
@@ -77,6 +79,7 @@ namespace HW4_Test2.Controllers
         [HttpGet]
         public ActionResult Awesome_Calculator()
         {
+            //Set the defaults for the input
             ViewBag.name = "";
             ViewBag.age = "";
             ViewBag.gamesBeaten = "";

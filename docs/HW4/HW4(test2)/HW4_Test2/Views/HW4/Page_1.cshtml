@@ -4,6 +4,7 @@
 }
 
 <h2 class="jumbotron">This is Page 1</h2>
+<!--Sets up the input form to accept the temperature and type from the user-->
 <form method="post">
     <label for="temp">What's the temperature right now?</label>
     <input type="text" name="temp" value="" />
@@ -11,6 +12,7 @@
     <input type="text" name="type" value="" />
     <input type="submit" name="submit" value="Submit" />
 </form>
+<!--Only show the temp if it's not null (or this specific value)-->
 @if (ViewBag.newTemp != 0.12345)
 {
     <p>Your converted temp is: @ViewBag.newTemp</p>

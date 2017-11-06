@@ -41,6 +41,7 @@ namespace hw3_app
 
         public String EvaluationPostFixInput(string input)
         {
+            //If the user gives me nothing
             if (input == null || input.Equals(""))
                 throw new ArgumentException("Null or the empty string are not valid postfix expressions.");
             stack.Clear();
@@ -57,7 +58,7 @@ namespace hw3_app
                 {
                     stack.Push(number);
                 }
-                else
+                else //Otherwise, throw the correct kind of error
                 {
                     if (str.Length > 1)
                     {

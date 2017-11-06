@@ -5,6 +5,7 @@
 
 <h2>Let's figure out how awesome you are</h2>
 <form method="post">
+    <!--Hard coded error checking for all these values. The user must put in a valid value, or I tell them to try again-->
     @if (ViewBag.name == null)
     {
         <p style="color: red">*Please input a valid answer</p>
@@ -37,7 +38,7 @@
     <input type="number" name="gamesBeaten" value="" required/>
     <input type="submit" name="submit" value="Submit" />
 </form>
-
+<!--Once all the values are valid, the page displays their awesome level-->
 @if (ViewBag.name != "" && ViewBag.age != null && ViewBag.gamesBeaten != null)
 {
     <p>Alrighty @ViewBag.name! Your awesomeness is level @ViewBag.aweLevel, Congrats!!</p>

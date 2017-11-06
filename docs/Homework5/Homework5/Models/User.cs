@@ -7,10 +7,12 @@ using System.Web.Mvc;
 
 namespace Homework5.Models
 {
+    //A user from my DB
     public class User
     {
+        //This is the PK, and it will auto increment, I don't need to set it
         public int ID { get; set; }
-
+        //Change the display for many of these, so it looks better in the display forms
         [Display(Name = "Drivers License #")]
         public int DriversLicense { get; set; }
 

@@ -1,4 +1,5 @@
-﻿CREATE TABLE dbo.Users
+﻿/*Create the table with all the values, and all required*/
+CREATE TABLE dbo.Users
 (
 	[ID] INT IDENTITY (1, 1) NOT NULL,
 	[DriversLicense] INT NOT NULL,
@@ -14,7 +15,7 @@
 	[UpdateVoter] INT NOT NULL,
 	CONSTRAINT [PK_dbo.Users] PRIMARY KEY CLUSTERED (ID)
 );
-
+/*Put 5 users into the DB, to test it out */
 INSERT INTO dbo.Users VALUES
 	('73233', 'Bobby', 'Dyson', 'Sori', '10-12-12 12:00:00', 'Some street #', 'Salem', 'OR', '97302', 'Marion', '1'),
 	('34234', 'gobby', 'Dyson', 'Sori', '10-12-12 12:00:00', 'Some street #', 'Salem', 'OR', '97302', 'Marion', '1'),
