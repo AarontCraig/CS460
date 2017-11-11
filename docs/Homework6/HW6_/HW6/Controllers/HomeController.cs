@@ -9,7 +9,6 @@ namespace HW6.Controllers
     public class HomeController : Controller
     {
         private AdventureWorksContext db = new AdventureWorksContext();
-
         //Get product categories
         /*
         public List getMainCats()
@@ -20,7 +19,9 @@ namespace HW6.Controllers
 
         public ActionResult Index()
         {
+            
             var products = db.Products.ToList();
+            ViewBag.info = products;
             return View();
         }
 
@@ -36,6 +37,11 @@ namespace HW6.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public ActionResult Test()
+        {
+            var products = db.Products.ToList();
+            return PartialView(products);
         }
     }
 }
