@@ -10,9 +10,17 @@ namespace HW6.Controllers
     {
         private AdventureWorksContext db = new AdventureWorksContext();
 
+        //Get product categories
+        /*
+        public List getMainCats()
+        {
+            var mainCats = db.ProductCategories.ToList();
+            return mainCats;
+        } */
+
         public ActionResult Index()
         {
-            Console.WriteLine(db.Products.OrderBy(p => p.Name).Take(10).ToList());
+            var products = db.Products.ToList();
             return View();
         }
 

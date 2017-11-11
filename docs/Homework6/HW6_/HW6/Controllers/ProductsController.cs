@@ -18,7 +18,7 @@ namespace HW6.Controllers
         public ActionResult Index()
         {
             var products = db.Products.Include(p => p.ProductDocument).Include(p => p.ProductModel).Include(p => p.ProductSubcategory).Include(p => p.UnitMeasure).Include(p => p.UnitMeasure1);
-            return View(products.ToList());
+            return View(products.ToList().Take(10));
         }
 
         // GET: Products/Details/5
