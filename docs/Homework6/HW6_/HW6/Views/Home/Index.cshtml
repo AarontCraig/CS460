@@ -19,7 +19,7 @@
                         <ul class="dropdown-menu">
                             @foreach (var cat in item.ProductSubcategories)
                             {
-                                <li><a href="#">@cat.Name</a></li> <!--I need to pass the ProductSubcategoryID-->
+                                <li><a href="#">@Html.ActionLink(cat.Name, "ChosenCategory", new { id = cat.ProductSubcategoryID })</a></li> <!--I need to pass the ProductSubcategoryID-->
                             }
                         </ul>
                     </li>

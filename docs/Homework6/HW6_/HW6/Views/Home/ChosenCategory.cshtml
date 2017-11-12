@@ -1,11 +1,28 @@
-﻿
+﻿@model IEnumerable<HW6.Product>
+
 @{
     ViewBag.Title = "ChosenCategory";
 }
+
 @{ 
-    Layout = null;
+    var mainCat = ViewBag.ProductCategories;
+    var subCat = ViewBag.ProductSubcategories;
 }
+
+
 
 <h2>ChosenCategory</h2> <!--Change this to chosen sub category name-->
 
 <!--Display list of items of the subcategory chosen-->
+@foreach (var item in Model)
+{
+    <p>@item.Name</p>
+    foreach (var photo in item.ProductProductPhotoes)
+    {
+        <img src="@Url.Content(photo.ProductPhoto.ThumbnailPhotoFileName)" height="200" width="200"/>
+        <img src="@Url.Content("~/Models/ProductPhoto/ProductPhoto" + photo.ProductPhoto.ThumbnailPhotoFileName)" height="200" width="200" />
+        <img src="@Url.Content("~/" + photo.ProductPhoto.ThumbnailPhotoFileName)" height="200" width="200" />
+        <img src="@Url.Content("~/Models" + photo.ProductPhoto.ThumbnailPhotoFileName)" height="200" width="200" />
+        <img src="data:image;base64,@System.Convert.ToBase64String(photo.ProductPhoto.LargePhoto)" />
+    }
+}

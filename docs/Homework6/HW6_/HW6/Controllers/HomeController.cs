@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using HW6;
 
 namespace HW6.Controllers
 {
@@ -13,7 +16,7 @@ namespace HW6.Controllers
 
         public ActionResult Index()
         {
-            //Here is where I do pagination
+            
             var mainList = db.ProductCategories.ToList();
 
             return View(mainList);
@@ -25,16 +28,19 @@ namespace HW6.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            //Here is where I do pagination
+            var productLine = db.ProductSubcategories.ToList()[id.Value].Products.ToList();
 
-            //ProductSubcategory productLine = db.ProductSubcategories.ToList()[id.Value].Products.ToList();
+            ViewBag.ProductCategories = db.ProductCategories.ToList();
+            ViewBag.ProductSubcategories = db.ProductSubcategories.ToList();
 
-            return View();
+            return View(productLine);
         }
 
-        public ActionResult Test()
+        public ActionResult Photos()
         {
-            var products = db.Products.ToList();
-            return PartialView(products);
+            var photos = db.ProductPhotoes.ToList();
+            return PartialView(photos);
         }
     }
 }
