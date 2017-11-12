@@ -1,6 +1,11 @@
-﻿@{
+﻿@model IEnumerable<HW6.ProductCategory>
+
+@{
     ViewBag.Title = "Home Page";
 }
 <div class="row">
-
+    @foreach (var item in Model)
+    {
+        <a>@Html.DisplayFor(modelItem => item.Name)</a>
+    }
 </div>

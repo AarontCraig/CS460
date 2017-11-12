@@ -10,11 +10,11 @@ namespace HW6.Controllers
     {
         private AdventureWorksContext db = new AdventureWorksContext();
         // GET: Layout
-        //[ChildActionOnly]
+        [ChildActionOnly]
         public ActionResult SetNavBar()
         {
-            var categories = db.ProductCategories;
-            return View();
+            var categories = db.ProductCategories.ToList();
+            return View(categories);
         }
     }
 }

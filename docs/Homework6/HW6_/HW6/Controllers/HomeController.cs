@@ -19,10 +19,9 @@ namespace HW6.Controllers
 
         public ActionResult Index()
         {
-            
-            var products = db.Products.ToList();
-            ViewBag.info = products;
-            return View();
+
+            var products = db.ProductCategories;
+            return View(products.ToList());
         }
 
         public ActionResult About()
