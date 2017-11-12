@@ -10,18 +10,20 @@
             <a class="navbar-brand" href="#">WebSiteName</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    @foreach (var cat in Model)
-                    {
-                        <li><a href="#">@cat.Name</a></li>
-                    }
-                </ul>
-            </li>
-            <li><a href="#">Page 2</a></li>
-            <li><a href="#">Page 3</a></li>
+            <!--<li class="active"><a href="#">Home</a></li>-->
+            >
+                @foreach (var item in Model)
+                {
+
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">@item.Name <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            @foreach (var cat in item.ProductSubcategories)
+                            {
+                                <li><a href="#">@cat.Name</a></li> <!--I need to pass the ProductSubcategoryID-->
+                            }
+                        </ul>
+                    </li>
+                }   
         </ul>
     </div>
 </nav>

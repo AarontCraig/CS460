@@ -19,16 +19,16 @@ namespace HW6.Controllers
             return View(mainList);
         }
 
-        public ActionResult ChosenCategory(int? id)
+        public ActionResult ChosenCategory(int? id) //Id is ProductSubcategoryID in ProductCategory table
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Product product = db.Products.Find(id);
+            //ProductSubcategory productLine = db.ProductSubcategories.ToList()[id.Value].Products.ToList();
 
-            return View(product);
+            return View();
         }
 
         public ActionResult Test()
