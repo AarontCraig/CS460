@@ -18,7 +18,7 @@
                 @foreach (var item in Model)
                 {
                     <li>
-                        @Html.ActionLink(@Html.DisplayFor(modelItem => item.Name).ToString(), "#")
+                        @Html.ActionLink(@Html.DisplayFor(modelItem => item.Name).ToString(), "ChosenCategory", new { id = item.ProductCategoryID })
                     </li>
                 }
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>

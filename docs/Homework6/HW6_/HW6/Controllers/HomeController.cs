@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,34 +10,27 @@ namespace HW6.Controllers
     public class HomeController : Controller
     {
         private AdventureWorksContext db = new AdventureWorksContext();
-        //Get product categories
-        /*
-        public List getMainCats()
-        {
-            var mainCats = db.ProductCategories.ToList();
-            return mainCats;
-        } */
 
         public ActionResult Index()
         {
+            //Here is where I do pagination
+            var mainList = db.ProductCategories.ToList();
 
-            var products = db.ProductCategories;
-            return View(products.ToList());
+            return View(mainList);
         }
 
-        public ActionResult About()
+        public ActionResult ChosenCategory(int? id)
         {
-            ViewBag.Message = "Your application description page.";
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
-            return View();
+            Product product = db.Products.Find(id);
+
+            return View(product);
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
         public ActionResult Test()
         {
             var products = db.Products.ToList();
