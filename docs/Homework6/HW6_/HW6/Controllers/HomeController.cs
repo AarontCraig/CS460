@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HW6;
+using System.Globalization;
 
 namespace HW6.Controllers
 {
@@ -16,6 +17,23 @@ namespace HW6.Controllers
 
         public ActionResult Index()
         {
+            var format = "MM-dd-yyyy HH:mm:ss:fff";
+            var stringDate = DateTime.Now.ToString(format);
+            var reviewDate = DateTime.ParseExact(stringDate, format, CultureInfo.InvariantCulture);
+            var modifiedDate = DateTime.ParseExact(stringDate, format, CultureInfo.InvariantCulture);
+
+            var newReview = new ProductReview
+            {
+                ProductID = 710,
+                ReviewerName = "Bobby",
+                ReviewDate = reviewDate,
+                EmailAddress = "Test@gmail.com",
+                Rating = 4,
+                Comments = "Testing",
+                ModifiedDate = modifiedDate
+            };
+            db.ProductReviews.Add(newReview);
+            db.SaveChanges();
 
             var mainList = db.ProductCategories.ToList();
 
@@ -29,14 +47,13 @@ namespace HW6.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //Here is where I do pagination
-            var productLine = db.ProductSubcategories.ToList()[id.Value].Products.ToList();
+            var productLine = db.ProductSubcategories.ToList()[id.Value - 1].Products.ToList();
 
             ViewBag.ProductCategories = db.ProductCategories.ToList();
             ViewBag.ProductSubcategories = db.ProductSubcategories.ToList();
 
             return View(productLine);
         }
-
         [HttpGet]
         public ActionResult Review(int? id)
         {
@@ -48,21 +65,40 @@ namespace HW6.Controllers
             return PartialView(specificProduct);
         }
         [HttpPost]
-        public ActionResult Review(string user, string email, int rating, string comment)
+        public ActionResult Review(FormCollection form)
         {
-            ProductReview review = new ProductReview
+            var format = "MM-dd-yyyy HH:mm:ss:fff";
+            var stringDate = DateTime.Now.ToString(format);
+            var reviewDate = DateTime.ParseExact(stringDate, format, CultureInfo.InvariantCulture);
+            var modifiedDate = DateTime.ParseExact(stringDate, format, CultureInfo.InvariantCulture);
+
+            int rating = Convert.ToInt32(form.Get("rating"));
+            string productID = ViewBag.ProductID;
+
+            var newReview = new ProductReview
+            {
+                ProductID = 710,
+                ReviewerName = "Bobby",
+                ReviewDate = reviewDate,
+                EmailAddress = "Test@gmail.com",
+                Rating = 4,
+                Comments = "Testing",
+                ModifiedDate = modifiedDate
+            };
+            /*var review = new ProductReview
             {
                 ProductID = ViewBag.ProductID,
-                ReviewerName = user,
-                ReviewDate = new DateTime(),
-                EmailAddress = email,
+                ReviewerName = form.Get("user"),
+                ReviewDate = reviewDate,
+                EmailAddress = form.Get("email"),
                 Rating = rating,
-                Comments = comment
-            };
-            db.ProductReviews.Add(review);
+                Comments = form.Get("comment"),
+                ModifiedDate = modifiedDate
+            };*/
+            db.ProductReviews.Add(newReview);
             db.SaveChanges();
 
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }

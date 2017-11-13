@@ -3,7 +3,9 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -18,7 +20,7 @@
                         <ul class="dropdown-menu">
                             @foreach (var cat in item.ProductSubcategories)
                             {
-                                <li><a href="#">@Html.ActionLink(cat.Name, "ChosenCategory", new { id = cat.ProductSubcategoryID })</a></li> <!--I need to pass the ProductSubcategoryID-->
+                                <li>@Html.ActionLink(cat.Name, "ChosenCategory", new { id = cat.ProductSubcategoryID })</li> <!--I need to pass the ProductSubcategoryID-->
                             }
                         </ul>
                     </li>
