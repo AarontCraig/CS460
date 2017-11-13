@@ -16,7 +16,7 @@ namespace HW6.Controllers
 
         public ActionResult Index()
         {
-            
+
             var mainList = db.ProductCategories.ToList();
 
             return View(mainList);
@@ -37,14 +37,32 @@ namespace HW6.Controllers
             return View(productLine);
         }
 
+        [HttpGet]
         public ActionResult Review(int? id)
         {
-            if(id == null)
+            if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var specificProduct = db.Products.Find(id);
 
             return PartialView(specificProduct);
+        }
+        [HttpPost]
+        public ActionResult Review(string user, string email, int rating, string comment)
+        {
+            ProductReview review = new ProductReview
+            {
+                ProductID = ViewBag.ProductID,
+                ReviewerName = user,
+                ReviewDate = new DateTime(),
+                EmailAddress = email,
+                Rating = rating,
+                Comments = comment
+            };
+            db.ProductReviews.Add(review);
+            db.SaveChanges();
+
+            return View();
         }
     }
 }
