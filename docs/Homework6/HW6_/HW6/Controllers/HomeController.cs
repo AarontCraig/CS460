@@ -37,10 +37,14 @@ namespace HW6.Controllers
             return View(productLine);
         }
 
-        public ActionResult Photos()
+        public ActionResult Review(int? id)
         {
-            var photos = db.ProductPhotoes.ToList();
-            return PartialView(photos);
+            if(id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var specificProduct = db.Products.Find(id);
+
+            return PartialView(specificProduct);
         }
     }
 }
