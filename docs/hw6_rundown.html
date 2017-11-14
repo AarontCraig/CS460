@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Aaron Craig's CS Portfolio</title>
+        <link rel="stylesheet" type="text/css" href="HW 1\My Website\bootstrap 3\css\bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="portfolio.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        </head>
+    <body>
+        <div class="container=fluid">
+            <h1 class="jumbotron text-center">Homework 6 Detailed</h1>
+                <div class="row content">
+                        <div class="col-sm-3 sidenav">
+                            <h4>Aaron's CS Portfolio</h4>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="https://github.com/AarontCraig/CS460/tree/master/docs/HW%201/My%20Website">My GitHub Repo</a></li>
+                                <li><a href="#">Homework 6 Detailed</a></li>
+                                <li><a href="hw5_rundown.html">Homework 5 Detailed</a></li>
+                                <li><a href="hw4_rundown.html">Homework 4 Detailed</a></li>
+                                <li><a href="hw3_rundown.html">Homework 3 Detailed</a></li>
+                                <li><a href="hw2_rundown.html">Homework 2 Detailed</a></li>
+                                <li><a href="hw1_rundown.html">Homework 1 Detailed</a></li>
+                            </ul>
+                            <br>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search Blog..">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    <!--Written portion here-->
+                    <div class="col-md-6">
+                        <p>
+                            In my sixth homework, I created a website and attached an existing product database. I used the Code First model,
+                            and created a working website that can view all of the products, navgiate their data, and leave reviews. It was 
+                            a long process, and took many hours, but I felt pretty good about the end result.
+                        </p>
+                        <ol class="rundown">
+                            <li>The first thing I did was to create a new branch on my github website. I did this using the git commands:
+                                <br><code>git branch -b HW6</code>
+                                <br><code>git checkout HW6</code>
+                                <br>And then I began working on that branch, pushing changes, creating files, all without affecting my main
+                                branch. At the end, I merged them all together. This was the only part I didn't have any problems with.
+                            </li>
+                            <img src="Homework6\Images\landing_page.PNG" height="600" width="1000">
+                            <br><br>
+                            <li>
+                                The first thing I began working on was the landing page. I needed to set up a navigation bar that could display
+                                the main product categories as list items in the nav bar. This required dynamic code with Razor and foreach loops
+                                to iterate over the database and get the proper information.
+                                <br><br>
+                                <xmp>
+@foreach (var item in Model.ProductCategories)
+{
+    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">@item.Name <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            @foreach (var cat in item.ProductSubcategories)
+            {
+                <li>@Html.ActionLink(cat.Name, "ChosenCategory", new { id = cat.ProductSubcategoryID })</li> <!--I need to pass the ProductSubcategoryID-->
+            }
+        </ul>
+    </li>
+}   
+                                </xmp>
+                                Razor is a built in programming language that can run in an HTML page, which is awsesome. It gives the programmer 
+                                so much more power, like for loops, access to variables, and connection to the database. It took my a while to
+                                get the foreach loops to iterate over the database properly, but once I had it figured out, I could display
+                                both the ProductCategories and the ProductSubcateries.
+                                <br>
+                            </li>
+                            <li>
+                                Up next was learning how to dynamically display a list of products based on the ProductSubcategory selected
+                                in the dropdown menu. I had to learn how to pass information around, and use @Html.ActionLink, another Razor
+                                feature, that allowed me to pass an ID back to my controller. Once I figured that out, it became quite easy
+                                to filter my database accordingly, and then display all the products in the subcategory.
+                                <br><br>
+                                <img src="Homework6\Images\subcategory_page.PNG" height="600" width="1000">
+                            </li>
+                            <li>
+                                After the display page was working and I got things looking decent, I had to get reviews. I needed to both accept
+                                reviews from users and display the stored comments there. I created a page for the user to leave their info and
+                                a comment.
+                                <br><br>
+                                <img src="Homework6\Images\review_page.PNG" height="600" width="400">
+                                <br><br>
+                                I needed to save the information from the page and put it in the controller. The code to do that looks like this:
+                                <xmp>
+[HttpPost]
+public ActionResult Review(FormCollection form, int? id)
+{
+    if (id == null)
+        return RedirectToAction("Index");
+    if (form.Get("user") == "" || form.Get("email") == "" || form.Get("comment") == "")
+        return RedirectToAction("Review");
+    var format = "MM-dd-yyyy HH:mm:ss:fff";
+    var stringDate = DateTime.Now.ToString(format);
+    var reviewDate = DateTime.ParseExact(stringDate, format, CultureInfo.InvariantCulture);
+    var modifiedDate = DateTime.ParseExact(stringDate, format, CultureInfo.InvariantCulture);
+
+    int rating = Convert.ToInt32(form.Get("rating"));
+
+    var review = new ProductReview
+    {
+        ProductID = id.Value,
+        ReviewerName = form.Get("user"),
+        ReviewDate = reviewDate,
+        EmailAddress = form.Get("email"),
+        Rating = rating,
+        Comments = form.Get("comment"),
+        ModifiedDate = modifiedDate
+    };
+    db.ProductReviews.Add(review);
+    db.SaveChanges();
+
+    return RedirectToAction("Index");
+}
+                                </xmp>
+                            </li>
+                            <li>
+                                I had gotten most of the web pages working, but they were jerry-rigged and not very pretty. So I went in 
+                                and created some ViewModels in my app. They are incredible, and allow me to pass data to views with Strongly
+                                Typed help and checking. One of my ViewModels looked like this:
+                                <xmp>
+namespace HW6.Models.ViewModels
+{
+    public class ChosenCategory
+    {
+        public IEnumerable<ProductCategory> ProductCategories { get; set; }
+        public IEnumerable<Product> ProductSubcategories { get; set; }
+        public string PageTitle { get; set; }
+        public IEnumerable<ProductProductPhoto> ProductPhotos { get; set; }
+        public IEnumerable<ProductReview> ProductReviews { get; set; }
+    }
+}
+                                </xmp>
+                            </li>
+                            <p>
+                                I spent many hours on this project, but I also learned a lot. I know how to pass data around with the MVC
+                                model. I have a much better understanding about the seperation of control, how to create ViewModels, and 
+                                I feel confident in being able to connect databases to web apps.
+                            </p>
+                    </div>
+                </div>
+        </div>
+    </body>
+</html>
