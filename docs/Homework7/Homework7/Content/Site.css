@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    backgruond: url(https://hdwallsource.com/img/2014/9/simple-abstract-backgrounds-17268-17824-hd-wallpapers.jpg);
+    background: url(https://hdwallsource.com/img/2014/9/simple-abstract-backgrounds-17268-17824-hd-wallpapers.jpg);
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -15,11 +15,4 @@
 */
 .dl-horizontal dt {
     white-space: normal;
-}
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
 }
