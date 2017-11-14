@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using HW6;
 using System.Globalization;
+using HW6.Models.ViewModels;
 
 namespace HW6.Controllers
 {
@@ -17,27 +18,10 @@ namespace HW6.Controllers
 
         public ActionResult Index()
         {
-            var format = "MM-dd-yyyy HH:mm:ss:fff";
-            var stringDate = DateTime.Now.ToString(format);
-            var reviewDate = DateTime.ParseExact(stringDate, format, CultureInfo.InvariantCulture);
-            var modifiedDate = DateTime.ParseExact(stringDate, format, CultureInfo.InvariantCulture);
-
-            var newReview = new ProductReview
-            {
-                ProductID = 710,
-                ReviewerName = "Bobby",
-                ReviewDate = reviewDate,
-                EmailAddress = "Test@gmail.com",
-                Rating = 4,
-                Comments = "Testing",
-                ModifiedDate = modifiedDate
-            };
-            db.ProductReviews.Add(newReview);
-            db.SaveChanges();
-
             var mainList = db.ProductCategories.ToList();
+            ProductCategory_Product forIndex = new ProductCategory_Product() { ProductCategories = db.ProductCategories, Products = db.Products };
 
-            return View(mainList);
+            return View(forIndex);
         }
 
         public ActionResult ChosenCategory(int? id) //Id is ProductSubcategoryID in ProductCategory table
@@ -47,12 +31,14 @@ namespace HW6.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //Here is where I do pagination
-            var productLine = db.ProductSubcategories.ToList()[id.Value - 1].Products.ToList();
+            ChosenCategory toReturn = new Models.ViewModels.ChosenCategory()
+            {
+                ProductCategories = db.ProductCategories,
+                ProductSubcategories = db.ProductSubcategories.ToList()[id.Value - 1].Products.ToList(),
+                PageTitle = db.ProductSubcategories.ToList()[id.Value - 1].Name
+            };
 
-            ViewBag.ProductCategories = db.ProductCategories.ToList();
-            ViewBag.ProductSubcategories = db.ProductSubcategories.ToList();
-
-            return View(productLine);
+            return View(toReturn);
         }
         [HttpGet]
         public ActionResult Review(int? id)
@@ -60,12 +46,12 @@ namespace HW6.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var specificProduct = db.Products.Find(id);
+            ForReview forReview = new ForReview() { ProductCategories = db.ProductCategories, SpecificProduct = db.Products.Find(id.Value) };
 
-            return PartialView(specificProduct);
+            return PartialView(forReview);
         }
         [HttpPost]
-        public ActionResult Review(FormCollection form)
+        public ActionResult Review(FormCollection form, int? id)
         {
             var format = "MM-dd-yyyy HH:mm:ss:fff";
             var stringDate = DateTime.Now.ToString(format);
@@ -73,32 +59,27 @@ namespace HW6.Controllers
             var modifiedDate = DateTime.ParseExact(stringDate, format, CultureInfo.InvariantCulture);
 
             int rating = Convert.ToInt32(form.Get("rating"));
-            string productID = ViewBag.ProductID;
 
-            var newReview = new ProductReview
+            var review = new ProductReview
             {
-                ProductID = 710,
-                ReviewerName = "Bobby",
-                ReviewDate = reviewDate,
-                EmailAddress = "Test@gmail.com",
-                Rating = 4,
-                Comments = "Testing",
-                ModifiedDate = modifiedDate
-            };
-            /*var review = new ProductReview
-            {
-                ProductID = ViewBag.ProductID,
+                ProductID = id.Value,
                 ReviewerName = form.Get("user"),
                 ReviewDate = reviewDate,
                 EmailAddress = form.Get("email"),
                 Rating = rating,
                 Comments = form.Get("comment"),
                 ModifiedDate = modifiedDate
-            };*/
-            db.ProductReviews.Add(newReview);
+            };
+            db.ProductReviews.Add(review);
             db.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult NavBar()
+        {
+            var mainList = db.ProductCategories.ToList();
+            return View(mainList);
         }
     }
 }
