@@ -1,13 +1,37 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #000033;
+    color: white;
 }
 
+.navbar-brand {
+    position: absolute;
+    text-align: center;
+    left: 0;
+}
+
+.navbar-nav {
+    position: absolute;
+    text-align: right;
+    right: 0;
+}
+
+table, td {
+    padding: 50px;
+}
+table, th {
+    padding-left: 50px;
+}
+
+.dropdown-menu {
+    background-color: dimgray;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    background-color: #000080;
+    
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 

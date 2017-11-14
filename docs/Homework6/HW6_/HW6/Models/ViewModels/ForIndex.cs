@@ -5,9 +5,9 @@ using System.Web;
 
 namespace HW6.Models.ViewModels
 {
-    public class ProductCategory_Product
+    public class ForIndex
     {
         public IEnumerable<ProductCategory> ProductCategories { get; set; }
-        public IEnumerable<Product> Products { get; set; }
+        public IEnumerable<ProductSubcategory> ProductSubcategories { get; set; }
     }
 }

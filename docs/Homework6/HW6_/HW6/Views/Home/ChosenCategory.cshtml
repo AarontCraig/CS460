@@ -4,7 +4,7 @@
     ViewBag.Title = "ChosenCategory";
 }
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="~/Home/Index">Adventure Works Biking Store</a>
@@ -33,6 +33,7 @@
     <tr>
         <th>Product Name</th>
         <th>Product Photo</th>
+        <th>Reviews</th>
     </tr>
 
     <!--Display list of items of the subcategory chosen-->
@@ -41,18 +42,14 @@
 
         <tr>
             <td>@Html.ActionLink(@item.Name, "Review", new { id = item.ProductID })</td>
-        </tr>
-        foreach (var photo in item.ProductProductPhotoes)
-        {
-        <tr>
-            <td><img src="data:image;base64,@System.Convert.ToBase64String(photo.ProductPhoto.LargePhoto)" /></td>
-        </tr>
-        }
-        foreach (var review in item.ProductReviews)
-        {
-            <tr>
+            @foreach (var photo in item.ProductProductPhotoes)
+            {
+                <td><img src="data:image;base64,@System.Convert.ToBase64String(photo.ProductPhoto.LargePhoto)" /> </td>
+            }
+            @foreach (var review in item.ProductReviews)
+            {
                 <td>@review.Comments</td>
-            </tr>
-        }
+            }
+        </tr>
     }
 </table>

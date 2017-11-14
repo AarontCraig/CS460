@@ -19,7 +19,7 @@ namespace HW6.Controllers
         public ActionResult Index()
         {
             var mainList = db.ProductCategories.ToList();
-            ProductCategory_Product forIndex = new ProductCategory_Product() { ProductCategories = db.ProductCategories, Products = db.Products };
+            ForIndex forIndex = new ForIndex() { ProductCategories = db.ProductCategories, ProductSubcategories = db.ProductSubcategories };
 
             return View(forIndex);
         }
@@ -46,13 +46,21 @@ namespace HW6.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            ForReview forReview = new ForReview() { ProductCategories = db.ProductCategories, SpecificProduct = db.Products.Find(id.Value) };
+            ForReview forReview = new ForReview() {
+                ProductCategories = db.ProductCategories,
+                SpecificProduct = db.Products.Find(id.Value),
+                
+            };
 
             return PartialView(forReview);
         }
         [HttpPost]
         public ActionResult Review(FormCollection form, int? id)
         {
+            if (id == null)
+                return RedirectToAction("Index");
+            if (form.Get("user") == "" || form.Get("email") == "" || form.Get("comment") == "")
+                return RedirectToAction("Review");
             var format = "MM-dd-yyyy HH:mm:ss:fff";
             var stringDate = DateTime.Now.ToString(format);
             var reviewDate = DateTime.ParseExact(stringDate, format, CultureInfo.InvariantCulture);
