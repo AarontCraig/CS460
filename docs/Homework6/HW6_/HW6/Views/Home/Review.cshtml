@@ -1,10 +1,9 @@
 ﻿@model HW6.Models.ViewModels.ForReview
+
 @{
     ViewBag.Title = "Review";
 }
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -12,7 +11,6 @@
         </div>
         <ul class="nav navbar-nav">
             <!--<li class="active"><a href="#">Home</a></li>-->
-            >
             @foreach (var item in Model.ProductCategories)
             {
                 <li class="dropdown">
@@ -28,6 +26,7 @@
         </ul>
     </div>
 </nav>
+
 <h2>Review</h2>
 
 <p>Let's leave a review for the @Model.SpecificProduct.Name</p>
@@ -56,6 +55,5 @@
         <label for="comment">Review:</label>
         <textarea class="form-control" rows="5" id="comment" name="comment"></textarea>
     </div>
-    <input type="submit" name="submit" value="Submit" />
     <button class="btn btn-default" value="@Html.ActionLink("Submit Review", "Review", new { id = Model.SpecificProduct.ProductID })"></button>"
 </form>
