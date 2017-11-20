@@ -5,6 +5,14 @@ using System.Web;
 
 namespace Homework7.Models
 {
+    public class Gif
+    {
+        public string url { get; set; }
+        public int width { get; set; }
+        public int height { get; set; }
+    }
+}
+        /*
         public class FixedHeightStill
         {
             public string url { get; set; }
@@ -294,4 +302,6 @@ namespace Homework7.Models
             public Pagination pagination { get; set; }
             public Meta meta { get; set; }
         }
+    }
 }
+*/
