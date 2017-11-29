@@ -19,11 +19,13 @@ namespace Homework7.Controllers
 {
     public class HomeController : Controller
     {
+        private UserContext db = new UserContext();
 
         public ActionResult Index()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Index(string q, string rating)
         {
@@ -50,22 +52,15 @@ namespace Homework7.Controllers
             reader.Close();
             response.Close();
 
-            Debug.WriteLine(rating);
-            Debug.WriteLine("Inside Post Index");
+            
 
             return Json(giphyResultsList, JsonRequestBehavior.AllowGet);
         }
-        public JsonResult UpdateGifs(string q)
-        {
-            JsonResult result = null;
-            Debug.WriteLine("here");
-            return result;
-        }
 
-        protected IList<Gif> UpdateResults()
+        protected IList<Gif> UpdateResults(string query, string rating)
         {
             string apiKey = System.Web.Configuration.WebConfigurationManager.AppSettings["GiphyKey"];
-            WebRequest request = WebRequest.Create("http://api.giphy.com/v1/gifs/search?q=Cats&limit=20&api_key=" + apiKey); //Requests the data from the url
+            WebRequest request = WebRequest.Create("http://api.giphy.com/v1/gifs/search?q=" + query + "&limit=20&rating=" + rating + "api_key=" + apiKey); //Requests the data from the url
             WebResponse response = request.GetResponse(); //Gets everything back from that website into one object
             Stream dataStream = response.GetResponseStream(); //Gets the response I want back, the json object
             StreamReader reader = new StreamReader(dataStream); //Decodes the stream

@@ -8,11 +8,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Globalization;
 
 namespace Homework7.Controllers
 {
     public class SearchController : Controller
     {
+        private UserContext db = new UserContext();
+
         public ActionResult Index(string q, string rating)
         {
             string apiKey = System.Web.Configuration.WebConfigurationManager.AppSettings["GiphyKey"];
@@ -37,6 +40,12 @@ namespace Homework7.Controllers
             //Close where necessary
             reader.Close();
             response.Close();
+
+            //Save data in DB
+            Query toSave = new Query();
+            toSave.SearchQuery = q;
+            toSave.SearchDate = DateTime.Now;
+            db.SaveChanges();
 
             Debug.WriteLine("Inside Ajax");
 

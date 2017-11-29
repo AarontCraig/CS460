@@ -36,27 +36,27 @@ function update() {
     else
         rating = "r";
     $.ajax({
-        url: "/Home/Index",
+        url: "/Search/Index",
         data: {
             q: query,
             rating: rating
         },
         dataType: "json",
-        type: "POST",
+        type: "GET",
         success: function (data) {
             $('.gif').remove();
             for (var i = 0; i < data.length; ++i) {
-                $("#gifs").append("<img src=\"" + data[i].url + "\" " + "class=\"gif\" />")
+                $("#gifs").append("<img src=\"" + data[i].url + "\" " + "class=\"gif\" />");
                 $('#gifs img').css({
                     'width': 200,
                     'height': 200
                 });
             }
         }
-    })
+    });
 }
 
 function enterCheck(e) {
     if (e.keyCode === 13)
-        update()
+        update();
 }
