@@ -11,6 +11,16 @@
 function update() {
     var query = document.getElementById("searchBar").value;
     var rating = 0;
+    if (document.getElementById("y").checked)
+        rating = "y";
+    else if (document.getElementById("g").checked)
+        rating = "g";
+    else if (document.getElementById("pg").checked)
+        rating = "pg";
+    else if (document.getElementById("pg-13").checked)
+        rating = "pg-13";
+    else
+        rating = "r";
     $.ajax({
         url: "/Home/Index",
         data: {
@@ -23,14 +33,13 @@ function update() {
             $('.gif').remove();
             for (var i = 0; i < data.length; ++i)
             {
-                $("#gifs").append("<img src=\"" + data[i].url + "\" width=\"" + data[i].width + "\" height=\"" + data[i].height + "\" class=\"gif\" />")
+                $("#gifs").append("<img src=\"" + data[i].url + "\" " + "class=\"gif\" />")
                 $('#gifs img').css({
                     'width': 200,
                     'height': 200
                 });
             }
         }
-        
 })
     }
 </script>
@@ -43,6 +52,12 @@ function update() {
             </div>
         </div>
     </form>
+    <!--Rating selection-->
+    <input type="radio" id="y" name="radio">Y
+    <input type="radio" id="g" name="radio">G
+    <input type="radio" id="pg" checked="checked" name="radio">PG
+    <input type="radio" id="pg-13" name="radio">PG-13
+    <input type="radio" id="r" name="radio">R
 </div>
 
 <asp:UpdatePanel id="gifs">

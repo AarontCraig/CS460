@@ -22,16 +22,13 @@ namespace Homework7.Controllers
 
         public ActionResult Index()
         {
-            IList<Gif> giphyResults = UpdateResults();
-            ViewBag.key = System.Web.Configuration.WebConfigurationManager.AppSettings["GiphyKey"];
-            Debug.WriteLine("Inside main Index");
-            return View(giphyResults);
+            return View();
         }
         [HttpPost]
-        public ActionResult Index(string q)
+        public ActionResult Index(string q, string rating)
         {
             string apiKey = System.Web.Configuration.WebConfigurationManager.AppSettings["GiphyKey"];
-            WebRequest request = WebRequest.Create("http://api.giphy.com/v1/gifs/search?q=" + q + "&limit=20&api_key=" + apiKey); //Requests the data from the url
+            WebRequest request = WebRequest.Create("http://api.giphy.com/v1/gifs/search?q=" + q + "&limit=20&rating=" + rating + "&api_key=" + apiKey); //Requests the data from the url
             WebResponse response = request.GetResponse(); //Gets everything back from that website into one object
             Stream dataStream = response.GetResponseStream(); //Gets the response I want back, the json object
             StreamReader reader = new StreamReader(dataStream); //Decodes the stream
@@ -53,7 +50,7 @@ namespace Homework7.Controllers
             reader.Close();
             response.Close();
 
-            Debug.WriteLine(q);
+            Debug.WriteLine(rating);
             Debug.WriteLine("Inside Post Index");
 
             return Json(giphyResultsList, JsonRequestBehavior.AllowGet);
