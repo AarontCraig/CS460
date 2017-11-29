@@ -7,51 +7,13 @@
 <div class="jumbotron text-center">
     <h1>Search for GIF's!!!</h1>
 </div>
-<script>
-function update() {
-    var query = document.getElementById("searchBar").value;
-    var rating = 0;
-    if (document.getElementById("y").checked)
-        rating = "y";
-    else if (document.getElementById("g").checked)
-        rating = "g";
-    else if (document.getElementById("pg").checked)
-        rating = "pg";
-    else if (document.getElementById("pg-13").checked)
-        rating = "pg-13";
-    else
-        rating = "r";
-    $.ajax({
-        url: "/Home/Index",
-        data: {
-            q: query,
-            rating: rating
-        },
-        dataType: "json",
-        type: "POST",
-        success: function (data) {
-            $('.gif').remove();
-            for (var i = 0; i < data.length; ++i)
-            {
-                $("#gifs").append("<img src=\"" + data[i].url + "\" " + "class=\"gif\" />")
-                $('#gifs img').css({
-                    'width': 200,
-                    'height': 200
-                });
-            }
-        }
-})
-    }
-</script>
 <div class="container text-center">
-    <form>
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search for something fun..." name="search" id="searchBar">
+            <input type="text" class="form-control" placeholder="Search for something fun..." name="search" id="searchBar" onkeyup="enterCheck(event, this);">
             <div class="input-group-btn">
                 <asp:button class="btn btn-default" id="searchButton" onclick="update()"><i class="glyphicon glyphicon-search"></i></asp:button>
             </div>
         </div>
-    </form>
     <!--Rating selection-->
     <input type="radio" id="y" name="radio">Y
     <input type="radio" id="g" name="radio">G
