@@ -46,6 +46,8 @@ namespace Homework7.Controllers
             toSave.SearchQuery = q;
             toSave.SearchDate = DateTime.Now;
             db.SaveChanges();
+            
+            
 
             Debug.WriteLine("Inside Ajax");
 
