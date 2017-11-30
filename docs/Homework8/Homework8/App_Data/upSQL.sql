@@ -23,13 +23,4 @@ CREATE TABLE dbo.CLASSIFICATION (
 	[ID] INT IDENTITY (1, 1) NOT NULL,
 	CONSTRAINT [PK_dbo.CLASSIFICATION] PRIMARY KEY CLUSTERED (ID),
 	[ARTWORK] INT FOREIGN KEY REFERENCES dbo.ARTWORK(ID) 
-);	
-
-INSERT INTO dbo.ARTIST VALUES
-	('M.C. Escher', 6/17/1898, 'Leeuwarden, Netherlands'),
-	('Leonardo Da Vinci', 5/2/1519, 'Vinci, Italy'),
-	('Hatip Mehmed Efendi', 11/18/1680, 'Unknown'),
-	('Salvador Dali', 5/11/1904, 'Figueres, Spain');
-
-INSERT INTO dbo.ARTWORK VALUES
-	('Circle Limit III', 1);
+);
