@@ -154,6 +154,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ARTISTsController.cs" />
     <Compile Include="Controllers\ARTWORKsController.cs" />
+    <Compile Include="Controllers\CLASSIFICATIONsController.cs" />
+    <Compile Include="Controllers\GENREsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -221,8 +223,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\ARTWORKs\Create.cshtml" />
     <Content Include="Views\ARTWORKs\Delete.cshtml" />
@@ -234,6 +234,17 @@
     <Content Include="Views\ARTISTs\Details.cshtml" />
     <Content Include="Views\ARTISTs\Edit.cshtml" />
     <Content Include="Views\ARTISTs\Index.cshtml" />
+    <Content Include="Views\Home\Artist.cshtml" />
+    <Content Include="Views\CLASSIFICATIONs\Create.cshtml" />
+    <Content Include="Views\CLASSIFICATIONs\Delete.cshtml" />
+    <Content Include="Views\CLASSIFICATIONs\Details.cshtml" />
+    <Content Include="Views\CLASSIFICATIONs\Edit.cshtml" />
+    <Content Include="Views\CLASSIFICATIONs\Index.cshtml" />
+    <Content Include="Views\GENREs\Create.cshtml" />
+    <Content Include="Views\GENREs\Delete.cshtml" />
+    <Content Include="Views\GENREs\Details.cshtml" />
+    <Content Include="Views\GENREs\Edit.cshtml" />
+    <Content Include="Views\GENREs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

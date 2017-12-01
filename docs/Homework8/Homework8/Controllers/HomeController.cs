@@ -4,29 +4,37 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Homework8.Models;
+using Homework8.Models.ViewModels;
 
 namespace Homework8.Controllers
 {
     public class HomeController : Controller
     {
-        private Art a = new Art();
+        private Art db = new Art();
 
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Artist()
         {
-            ViewBag.Message = "Your application description page.";
+            var artists = db.ARTISTs.ToList();
+            return View(artists);
+        }
 
+        public ActionResult Artwork()
+        {
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Genre()
         {
-            ViewBag.Message = "Your contact page.";
+            return View();
+        }
 
+        public ActionResult Classification()
+        {
             return View();
         }
     }
