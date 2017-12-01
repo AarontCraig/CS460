@@ -153,6 +153,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ARTISTsController.cs" />
+    <Compile Include="Controllers\ARTWORKsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -162,12 +163,13 @@
     <Compile Include="Models\ARTWORK.cs" />
     <Compile Include="Models\CLASSIFICATION.cs" />
     <Compile Include="Models\GENRE.cs" />
+    <Compile Include="Models\ViewModels\AllArt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Homework8.mdf" />
-    <Content Include="App_Data\Homework8_log.ldf">
-      <DependentUpon>Homework8.mdf</DependentUpon>
+    <Content Include="App_Data\HW8 DBmdf.mdf" />
+    <Content Include="App_Data\HW8 DBmdf_log.ldf">
+      <DependentUpon>HW8 DBmdf.mdf</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -222,15 +224,18 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\ARTWORKs\Create.cshtml" />
+    <Content Include="Views\ARTWORKs\Delete.cshtml" />
+    <Content Include="Views\ARTWORKs\Details.cshtml" />
+    <Content Include="Views\ARTWORKs\Edit.cshtml" />
+    <Content Include="Views\ARTWORKs\Index.cshtml" />
     <Content Include="Views\ARTISTs\Create.cshtml" />
     <Content Include="Views\ARTISTs\Delete.cshtml" />
     <Content Include="Views\ARTISTs\Details.cshtml" />
     <Content Include="Views\ARTISTs\Edit.cshtml" />
     <Content Include="Views\ARTISTs\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Arts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />

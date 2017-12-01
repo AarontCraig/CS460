@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Homework8.Models.ARTIST>
+﻿@model IEnumerable<Homework8.Models.ARTWORK>
 
 @{
     ViewBag.Title = "Index";
@@ -12,13 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NAME)
+            @Html.DisplayNameFor(model => model.ARTIST1.NAME)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DOB)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BIRTHCITY)
+            @Html.DisplayNameFor(model => model.TITLE)
         </th>
         <th></th>
     </tr>
@@ -26,13 +23,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.NAME)
+            @Html.DisplayFor(modelItem => item.ARTIST1.NAME)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DOB)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BIRTHCITY)
+            @Html.DisplayFor(modelItem => item.TITLE)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
