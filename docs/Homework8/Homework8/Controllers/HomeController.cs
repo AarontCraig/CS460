@@ -38,12 +38,14 @@ namespace Homework8.Controllers
             string genreID = db.GENREs.Find(ID).NAME;
 
             //Build the datamodel to return
-            for (int i = 0; i <= db.CLASSIFICATIONs.ToList().Count; ++i)
+            foreach (var item in db.CLASSIFICATIONs)
             {
-                if(db.CLASSIFICATIONs.ToList()[i].GENRE1.NAME == genreID)
+                jsonModel temp = new jsonModel();
+                if (item.GENRE1.NAME == genreID)
                 {
-                    data[i].Artwork = db.CLASSIFICATIONs.ToList()[i].GENRE1.NAME;
-                    data[i].ArtistName = db.CLASSIFICATIONs.ToList()[i].GENRE1.NAME;
+                    temp.Artwork = item.ARTWORK1.TITLE;
+                    temp.ArtistName = item.ARTWORK1.ARTIST1.NAME;
+                    data.Add(temp);
                 }
             }
 
