@@ -46,8 +46,11 @@ namespace Homework7.Controllers
             toSave.SearchQuery = q;
             toSave.SearchDate = DateTime.Now;
             db.SaveChanges();
-
-            Debug.WriteLine("Inside Ajax");
+            
+            foreach (var item in db.Queries.ToList())
+            {
+                Debug.WriteLine(item.SearchQuery);
+            }
 
             return Json(giphyResultsList, JsonRequestBehavior.AllowGet);
         }
