@@ -170,7 +170,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Content Include="App_Data\downSQL.sql" />
     <Content Include="App_Data\HW8 DBmdf.mdf" />
     <Content Include="App_Data\HW8 DBmdf_log.ldf">
@@ -179,12 +178,6 @@
     <Content Include="App_Data\upSQL.sql" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
-=======
-    <Content Include="App_Data\Homework8.mdf" />
-    <Content Include="App_Data\Homework8_log.ldf">
-      <DependentUpon>Homework8.mdf</DependentUpon>
-    </Content>
->>>>>>> HW8_Real
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -255,22 +248,7 @@
     <Content Include="Views\GENREs\Edit.cshtml" />
     <Content Include="Views\GENREs\Index.cshtml" />
   </ItemGroup>
-<<<<<<< HEAD
   <ItemGroup />
-=======
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-  </ItemGroup>
->>>>>>> HW8_Real
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
