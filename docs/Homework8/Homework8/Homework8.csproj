@@ -166,6 +166,7 @@
     <Compile Include="Models\CLASSIFICATION.cs" />
     <Compile Include="Models\GENRE.cs" />
     <Compile Include="Models\ViewModels\AllArt.cs" />
+    <Compile Include="Models\ViewModels\jsonModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -212,7 +213,6 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\updateGifs.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
