@@ -50,6 +50,12 @@ namespace Homework8.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (aRTIST.NAME.Length > 50)
+                {
+                    ///Add a message that's invalid
+                }
+                if (aRTIST.DOB >= DateTime.Now)
+                    ///Add a message that's invalid
                 db.ARTISTs.Add(aRTIST);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,7 +88,13 @@ namespace Homework8.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(aRTIST).State = EntityState.Modified;
+                if (aRTIST.NAME.Length > 50)
+                {
+                    ///Add a message that's invalid
+                }
+                if (aRTIST.DOB >= DateTime.Now)
+                    ///Add a message that's invalid
+                    db.Entry(aRTIST).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

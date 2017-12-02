@@ -15,9 +15,14 @@ namespace Homework8.Controllers
 
         public ActionResult Index()
         {
-            Debug.WriteLine(db.ARTISTs.ToList().FirstOrDefault());
+            AllArt data = new AllArt{
+                ArtistList = db.ARTISTs,
+                ArtworkList = db.ARTWORKs,
+                GenreList = db.GENREs,
+                ClassificationList = db.CLASSIFICATIONs
+            };
 
-            return View();
+            return View(data);
         }
     }
 }
