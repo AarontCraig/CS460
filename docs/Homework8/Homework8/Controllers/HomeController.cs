@@ -16,26 +16,5 @@ namespace Homework8.Controllers
         {
             return View();
         }
-
-        public ActionResult Artist()
-        {
-            var artists = db.ARTISTs.ToList();
-            return View(artists);
-        }
-
-        public ActionResult Artwork()
-        {
-            return View();
-        }
-
-        public ActionResult Genre()
-        {
-            return View();
-        }
-
-        public ActionResult Classification()
-        {
-            return View();
-        }
     }
 }
