@@ -11,8 +11,12 @@ namespace Homework8.Models
     {
         public int ID { get; set; }
 
-        public int? ARTWORK { get; set; }
+        public int ARTWORK { get; set; }
+
+        public int? GENRE { get; set; }
 
         public virtual ARTWORK ARTWORK1 { get; set; }
+
+        public virtual GENRE GENRE1 { get; set; }
     }
 }

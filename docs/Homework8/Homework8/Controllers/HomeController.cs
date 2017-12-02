@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Homework8.Models;
 using Homework8.Models.ViewModels;
+using System.Diagnostics;
 
 namespace Homework8.Controllers
 {
@@ -14,6 +15,8 @@ namespace Homework8.Controllers
 
         public ActionResult Index()
         {
+            Debug.WriteLine(db.ARTISTs.ToList().FirstOrDefault());
+
             return View();
         }
     }

@@ -17,7 +17,7 @@ namespace Homework8.Controllers
         // GET: CLASSIFICATIONs
         public ActionResult Index()
         {
-            var cLASSIFICATIONs = db.CLASSIFICATIONs.Include(c => c.ARTWORK1);
+            var cLASSIFICATIONs = db.CLASSIFICATIONs.Include(c => c.ARTWORK1).Include(c => c.GENRE1);
             return View(cLASSIFICATIONs.ToList());
         }
 
@@ -40,6 +40,7 @@ namespace Homework8.Controllers
         public ActionResult Create()
         {
             ViewBag.ARTWORK = new SelectList(db.ARTWORKs, "ID", "TITLE");
+            ViewBag.GENRE = new SelectList(db.GENREs, "ID", "NAME");
             return View();
         }
 
@@ -48,7 +49,7 @@ namespace Homework8.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ARTWORK")] CLASSIFICATION cLASSIFICATION)
+        public ActionResult Create([Bind(Include = "ID,ARTWORK,GENRE")] CLASSIFICATION cLASSIFICATION)
         {
             if (ModelState.IsValid)
             {
@@ -58,6 +59,7 @@ namespace Homework8.Controllers
             }
 
             ViewBag.ARTWORK = new SelectList(db.ARTWORKs, "ID", "TITLE", cLASSIFICATION.ARTWORK);
+            ViewBag.GENRE = new SelectList(db.GENREs, "ID", "NAME", cLASSIFICATION.GENRE);
             return View(cLASSIFICATION);
         }
 
@@ -74,6 +76,7 @@ namespace Homework8.Controllers
                 return HttpNotFound();
             }
             ViewBag.ARTWORK = new SelectList(db.ARTWORKs, "ID", "TITLE", cLASSIFICATION.ARTWORK);
+            ViewBag.GENRE = new SelectList(db.GENREs, "ID", "NAME", cLASSIFICATION.GENRE);
             return View(cLASSIFICATION);
         }
 
@@ -82,7 +85,7 @@ namespace Homework8.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ARTWORK")] CLASSIFICATION cLASSIFICATION)
+        public ActionResult Edit([Bind(Include = "ID,ARTWORK,GENRE")] CLASSIFICATION cLASSIFICATION)
         {
             if (ModelState.IsValid)
             {
@@ -91,6 +94,7 @@ namespace Homework8.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ARTWORK = new SelectList(db.ARTWORKs, "ID", "TITLE", cLASSIFICATION.ARTWORK);
+            ViewBag.GENRE = new SelectList(db.GENREs, "ID", "NAME", cLASSIFICATION.GENRE);
             return View(cLASSIFICATION);
         }
 

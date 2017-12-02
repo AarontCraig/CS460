@@ -21,6 +21,7 @@ namespace Homework8.Models
         [StringLength(255)]
         public string NAME { get; set; }
 
+        [Column(TypeName = "date")]
         public DateTime DOB { get; set; }
 
         [Required]

@@ -38,12 +38,18 @@ namespace Homework8.Models
 
             modelBuilder.Entity<ARTWORK>()
                 .HasMany(e => e.CLASSIFICATIONs)
-                .WithOptional(e => e.ARTWORK1)
-                .HasForeignKey(e => e.ARTWORK);
+                .WithRequired(e => e.ARTWORK1)
+                .HasForeignKey(e => e.ARTWORK)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<GENRE>()
                 .Property(e => e.NAME)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<GENRE>()
+                .HasMany(e => e.CLASSIFICATIONs)
+                .WithOptional(e => e.GENRE1)
+                .HasForeignKey(e => e.GENRE);
         }
     }
 }
