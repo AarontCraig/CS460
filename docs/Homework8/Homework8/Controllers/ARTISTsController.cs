@@ -48,6 +48,10 @@ namespace Homework8.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,NAME,DOB,BIRTHCITY")] ARTISTs aRTISTs)
         {
+            //Don't allow time beyond or long names
+            if (aRTISTs.NAME.Length > 50 ||aRTISTs.DOB > DateTime.Now)
+                return View(aRTISTs);
+
             if (ModelState.IsValid)
             {
                 db.ARTISTs.Add(aRTISTs);

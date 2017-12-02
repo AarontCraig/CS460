@@ -49,9 +49,11 @@ namespace Homework8.Controllers
                 }
             }
 
-            //string output = new JavaScriptSerializer().Serialize(ListOfMyObject);
+            IEnumerable<jsonModel> toReturn = data.OrderBy(d => d.Artwork);
 
-            return Json(data, JsonRequestBehavior.AllowGet);
+            //data.OrderBy(data => data.Artwork);
+
+            return Json(data.OrderBy(d => d.Artwork), JsonRequestBehavior.AllowGet);
         }
     }
 }
