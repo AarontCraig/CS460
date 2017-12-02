@@ -14,7 +14,7 @@ namespace Homework7.Controllers
 {
     public class SearchController : Controller
     {
-        private UserContext db = new UserContext();
+        private HW7 db = new HW7();
 
         public ActionResult Index(string q, string rating)
         {

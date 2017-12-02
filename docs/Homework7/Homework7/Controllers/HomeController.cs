@@ -19,8 +19,6 @@ namespace Homework7.Controllers
 {
     public class HomeController : Controller
     {
-        private UserContext db = new UserContext();
-
         public ActionResult Index()
         {
             return View();

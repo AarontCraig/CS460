@@ -5,10 +5,10 @@ namespace Homework7.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class UserContext : DbContext
+    public partial class HW7 : DbContext
     {
-        public UserContext()
-            : base("name=Query")
+        public HW7()
+            : base("name=HW7")
         {
         }
 

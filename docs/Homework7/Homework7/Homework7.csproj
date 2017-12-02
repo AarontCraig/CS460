@@ -158,15 +158,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Gif.cs" />
-    <Compile Include="DAL\UserContext.cs" />
+    <Compile Include="DAL\HW7.cs" />
     <Compile Include="Models\Query.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\gifDB.mdf" />
-    <Content Include="App_Data\gifDB_log.ldf">
-      <DependentUpon>gifDB.mdf</DependentUpon>
+    <Content Include="App_Data\HW7.mdf" />
+    <Content Include="App_Data\HW7_log.ldf">
+      <DependentUpon>HW7.mdf</DependentUpon>
     </Content>
+    <Content Include="App_Data\sqlUP.sql" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
