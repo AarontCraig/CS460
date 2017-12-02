@@ -12,7 +12,7 @@ namespace Homework8.Controllers
 {
     public class GENREsController : Controller
     {
-        private Art db = new Art();
+        private UserContext db = new UserContext();
 
         // GET: GENREs
         public ActionResult Index()
@@ -27,12 +27,12 @@ namespace Homework8.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GENRE gENRE = db.GENREs.Find(id);
-            if (gENRE == null)
+            GENREs gENREs = db.GENREs.Find(id);
+            if (gENREs == null)
             {
                 return HttpNotFound();
             }
-            return View(gENRE);
+            return View(gENREs);
         }
 
         // GET: GENREs/Create
@@ -46,16 +46,16 @@ namespace Homework8.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,NAME")] GENRE gENRE)
+        public ActionResult Create([Bind(Include = "ID,NAME")] GENREs gENREs)
         {
             if (ModelState.IsValid)
             {
-                db.GENREs.Add(gENRE);
+                db.GENREs.Add(gENREs);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(gENRE);
+            return View(gENREs);
         }
 
         // GET: GENREs/Edit/5
@@ -65,12 +65,12 @@ namespace Homework8.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GENRE gENRE = db.GENREs.Find(id);
-            if (gENRE == null)
+            GENREs gENREs = db.GENREs.Find(id);
+            if (gENREs == null)
             {
                 return HttpNotFound();
             }
-            return View(gENRE);
+            return View(gENREs);
         }
 
         // POST: GENREs/Edit/5
@@ -78,15 +78,15 @@ namespace Homework8.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,NAME")] GENRE gENRE)
+        public ActionResult Edit([Bind(Include = "ID,NAME")] GENREs gENREs)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(gENRE).State = EntityState.Modified;
+                db.Entry(gENREs).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(gENRE);
+            return View(gENREs);
         }
 
         // GET: GENREs/Delete/5
@@ -96,12 +96,12 @@ namespace Homework8.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GENRE gENRE = db.GENREs.Find(id);
-            if (gENRE == null)
+            GENREs gENREs = db.GENREs.Find(id);
+            if (gENREs == null)
             {
                 return HttpNotFound();
             }
-            return View(gENRE);
+            return View(gENREs);
         }
 
         // POST: GENREs/Delete/5
@@ -109,8 +109,8 @@ namespace Homework8.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            GENRE gENRE = db.GENREs.Find(id);
-            db.GENREs.Remove(gENRE);
+            GENREs gENREs = db.GENREs.Find(id);
+            db.GENREs.Remove(gENREs);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

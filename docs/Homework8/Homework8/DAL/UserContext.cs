@@ -5,51 +5,52 @@ namespace Homework8.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class Art : DbContext
+    public partial class UserContext : DbContext
     {
-        public Art()
-            : base("name=Art")
+        public UserContext()
+            : base("name=UserContext")
         {
         }
 
-        public virtual DbSet<ARTIST> ARTISTs { get; set; }
-        public virtual DbSet<ARTWORK> ARTWORKs { get; set; }
-        public virtual DbSet<CLASSIFICATION> CLASSIFICATIONs { get; set; }
-        public virtual DbSet<GENRE> GENREs { get; set; }
+        public virtual DbSet<ARTISTs> ARTISTs { get; set; }
+        public virtual DbSet<ARTWORKs> ARTWORKs { get; set; }
+        public virtual DbSet<CLASSIFICATIONs> CLASSIFICATIONs { get; set; }
+        public virtual DbSet<GENREs> GENREs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ARTIST>()
+            modelBuilder.Entity<ARTISTs>()
                 .Property(e => e.NAME)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ARTIST>()
+            modelBuilder.Entity<ARTISTs>()
                 .Property(e => e.BIRTHCITY)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ARTIST>()
+            modelBuilder.Entity<ARTISTs>()
                 .HasMany(e => e.ARTWORKs)
                 .WithOptional(e => e.ARTIST1)
                 .HasForeignKey(e => e.ARTIST);
 
-            modelBuilder.Entity<ARTWORK>()
+            modelBuilder.Entity<ARTWORKs>()
                 .Property(e => e.TITLE)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ARTWORK>()
+            modelBuilder.Entity<ARTWORKs>()
                 .HasMany(e => e.CLASSIFICATIONs)
                 .WithRequired(e => e.ARTWORK1)
                 .HasForeignKey(e => e.ARTWORK)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<GENRE>()
+            modelBuilder.Entity<GENREs>()
                 .Property(e => e.NAME)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<GENRE>()
+            modelBuilder.Entity<GENREs>()
                 .HasMany(e => e.CLASSIFICATIONs)
-                .WithOptional(e => e.GENRE1)
-                .HasForeignKey(e => e.GENRE);
+                .WithRequired(e => e.GENRE1)
+                .HasForeignKey(e => e.GENRE)
+                .WillCascadeOnDelete(false);
         }
     }
 }

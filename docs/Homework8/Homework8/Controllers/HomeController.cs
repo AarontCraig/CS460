@@ -12,10 +12,12 @@ namespace Homework8.Controllers
 {
     public class HomeController : Controller
     {
-        private Art db = new Art();
+        private UserContext db = new UserContext();
 
         public ActionResult Index()
         {
+            Debug.WriteLine(db.ARTWORKs.ToList()[0].ARTIST1.NAME);
+
             //Format the data to be passed into the main view
             AllArt data = new AllArt{
                 ArtistList = db.ARTISTs,

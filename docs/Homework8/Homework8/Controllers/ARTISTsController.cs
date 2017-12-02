@@ -12,7 +12,7 @@ namespace Homework8.Controllers
 {
     public class ARTISTsController : Controller
     {
-        private Art db = new Art();
+        private UserContext db = new UserContext();
 
         // GET: ARTISTs
         public ActionResult Index()
@@ -27,12 +27,12 @@ namespace Homework8.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ARTIST aRTIST = db.ARTISTs.Find(id);
-            if (aRTIST == null)
+            ARTISTs aRTISTs = db.ARTISTs.Find(id);
+            if (aRTISTs == null)
             {
                 return HttpNotFound();
             }
-            return View(aRTIST);
+            return View(aRTISTs);
         }
 
         // GET: ARTISTs/Create
@@ -46,22 +46,16 @@ namespace Homework8.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,NAME,DOB,BIRTHCITY")] ARTIST aRTIST)
+        public ActionResult Create([Bind(Include = "ID,NAME,DOB,BIRTHCITY")] ARTISTs aRTISTs)
         {
             if (ModelState.IsValid)
             {
-                if (aRTIST.NAME.Length > 50)
-                {
-                    ///Add a message that's invalid
-                }
-                if (aRTIST.DOB >= DateTime.Now)
-                    ///Add a message that's invalid
-                db.ARTISTs.Add(aRTIST);
+                db.ARTISTs.Add(aRTISTs);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(aRTIST);
+            return View(aRTISTs);
         }
 
         // GET: ARTISTs/Edit/5
@@ -71,12 +65,12 @@ namespace Homework8.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ARTIST aRTIST = db.ARTISTs.Find(id);
-            if (aRTIST == null)
+            ARTISTs aRTISTs = db.ARTISTs.Find(id);
+            if (aRTISTs == null)
             {
                 return HttpNotFound();
             }
-            return View(aRTIST);
+            return View(aRTISTs);
         }
 
         // POST: ARTISTs/Edit/5
@@ -84,21 +78,15 @@ namespace Homework8.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,NAME,DOB,BIRTHCITY")] ARTIST aRTIST)
+        public ActionResult Edit([Bind(Include = "ID,NAME,DOB,BIRTHCITY")] ARTISTs aRTISTs)
         {
             if (ModelState.IsValid)
             {
-                if (aRTIST.NAME.Length > 50)
-                {
-                    ///Add a message that's invalid
-                }
-                if (aRTIST.DOB >= DateTime.Now)
-                    ///Add a message that's invalid
-                    db.Entry(aRTIST).State = EntityState.Modified;
+                db.Entry(aRTISTs).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(aRTIST);
+            return View(aRTISTs);
         }
 
         // GET: ARTISTs/Delete/5
@@ -108,12 +96,12 @@ namespace Homework8.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ARTIST aRTIST = db.ARTISTs.Find(id);
-            if (aRTIST == null)
+            ARTISTs aRTISTs = db.ARTISTs.Find(id);
+            if (aRTISTs == null)
             {
                 return HttpNotFound();
             }
-            return View(aRTIST);
+            return View(aRTISTs);
         }
 
         // POST: ARTISTs/Delete/5
@@ -121,8 +109,8 @@ namespace Homework8.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ARTIST aRTIST = db.ARTISTs.Find(id);
-            db.ARTISTs.Remove(aRTIST);
+            ARTISTs aRTISTs = db.ARTISTs.Find(id);
+            db.ARTISTs.Remove(aRTISTs);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

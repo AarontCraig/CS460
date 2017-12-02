@@ -6,26 +6,29 @@ namespace Homework8.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ARTWORK")]
-    public partial class ARTWORK
+    [Table("ARTIST")]
+    public partial class ARTISTs
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ARTWORK()
+        public ARTISTs()
         {
-            CLASSIFICATIONs = new HashSet<CLASSIFICATION>();
+            ARTWORKs = new HashSet<ARTWORKs>();
         }
 
         public int ID { get; set; }
 
         [Required]
         [StringLength(255)]
-        public string TITLE { get; set; }
+        public string NAME { get; set; }
 
-        public int? ARTIST { get; set; }
+        [Column(TypeName = "date")]
+        public DateTime DOB { get; set; }
 
-        public virtual ARTIST ARTIST1 { get; set; }
+        [Required]
+        [StringLength(255)]
+        public string BIRTHCITY { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CLASSIFICATION> CLASSIFICATIONs { get; set; }
+        public virtual ICollection<ARTWORKs> ARTWORKs { get; set; }
     }
 }

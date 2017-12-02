@@ -12,7 +12,7 @@ namespace Homework8.Controllers
 {
     public class CLASSIFICATIONsController : Controller
     {
-        private Art db = new Art();
+        private UserContext db = new UserContext();
 
         // GET: CLASSIFICATIONs
         public ActionResult Index()
@@ -28,12 +28,12 @@ namespace Homework8.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CLASSIFICATION cLASSIFICATION = db.CLASSIFICATIONs.Find(id);
-            if (cLASSIFICATION == null)
+            CLASSIFICATIONs cLASSIFICATIONs = db.CLASSIFICATIONs.Find(id);
+            if (cLASSIFICATIONs == null)
             {
                 return HttpNotFound();
             }
-            return View(cLASSIFICATION);
+            return View(cLASSIFICATIONs);
         }
 
         // GET: CLASSIFICATIONs/Create
@@ -49,18 +49,18 @@ namespace Homework8.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ARTWORK,GENRE")] CLASSIFICATION cLASSIFICATION)
+        public ActionResult Create([Bind(Include = "ID,ARTWORK,GENRE")] CLASSIFICATIONs cLASSIFICATIONs)
         {
             if (ModelState.IsValid)
             {
-                db.CLASSIFICATIONs.Add(cLASSIFICATION);
+                db.CLASSIFICATIONs.Add(cLASSIFICATIONs);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ARTWORK = new SelectList(db.ARTWORKs, "ID", "TITLE", cLASSIFICATION.ARTWORK);
-            ViewBag.GENRE = new SelectList(db.GENREs, "ID", "NAME", cLASSIFICATION.GENRE);
-            return View(cLASSIFICATION);
+            ViewBag.ARTWORK = new SelectList(db.ARTWORKs, "ID", "TITLE", cLASSIFICATIONs.ARTWORK);
+            ViewBag.GENRE = new SelectList(db.GENREs, "ID", "NAME", cLASSIFICATIONs.GENRE);
+            return View(cLASSIFICATIONs);
         }
 
         // GET: CLASSIFICATIONs/Edit/5
@@ -70,14 +70,14 @@ namespace Homework8.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CLASSIFICATION cLASSIFICATION = db.CLASSIFICATIONs.Find(id);
-            if (cLASSIFICATION == null)
+            CLASSIFICATIONs cLASSIFICATIONs = db.CLASSIFICATIONs.Find(id);
+            if (cLASSIFICATIONs == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ARTWORK = new SelectList(db.ARTWORKs, "ID", "TITLE", cLASSIFICATION.ARTWORK);
-            ViewBag.GENRE = new SelectList(db.GENREs, "ID", "NAME", cLASSIFICATION.GENRE);
-            return View(cLASSIFICATION);
+            ViewBag.ARTWORK = new SelectList(db.ARTWORKs, "ID", "TITLE", cLASSIFICATIONs.ARTWORK);
+            ViewBag.GENRE = new SelectList(db.GENREs, "ID", "NAME", cLASSIFICATIONs.GENRE);
+            return View(cLASSIFICATIONs);
         }
 
         // POST: CLASSIFICATIONs/Edit/5
@@ -85,17 +85,17 @@ namespace Homework8.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ARTWORK,GENRE")] CLASSIFICATION cLASSIFICATION)
+        public ActionResult Edit([Bind(Include = "ID,ARTWORK,GENRE")] CLASSIFICATIONs cLASSIFICATIONs)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cLASSIFICATION).State = EntityState.Modified;
+                db.Entry(cLASSIFICATIONs).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ARTWORK = new SelectList(db.ARTWORKs, "ID", "TITLE", cLASSIFICATION.ARTWORK);
-            ViewBag.GENRE = new SelectList(db.GENREs, "ID", "NAME", cLASSIFICATION.GENRE);
-            return View(cLASSIFICATION);
+            ViewBag.ARTWORK = new SelectList(db.ARTWORKs, "ID", "TITLE", cLASSIFICATIONs.ARTWORK);
+            ViewBag.GENRE = new SelectList(db.GENREs, "ID", "NAME", cLASSIFICATIONs.GENRE);
+            return View(cLASSIFICATIONs);
         }
 
         // GET: CLASSIFICATIONs/Delete/5
@@ -105,12 +105,12 @@ namespace Homework8.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CLASSIFICATION cLASSIFICATION = db.CLASSIFICATIONs.Find(id);
-            if (cLASSIFICATION == null)
+            CLASSIFICATIONs cLASSIFICATIONs = db.CLASSIFICATIONs.Find(id);
+            if (cLASSIFICATIONs == null)
             {
                 return HttpNotFound();
             }
-            return View(cLASSIFICATION);
+            return View(cLASSIFICATIONs);
         }
 
         // POST: CLASSIFICATIONs/Delete/5
@@ -118,8 +118,8 @@ namespace Homework8.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CLASSIFICATION cLASSIFICATION = db.CLASSIFICATIONs.Find(id);
-            db.CLASSIFICATIONs.Remove(cLASSIFICATION);
+            CLASSIFICATIONs cLASSIFICATIONs = db.CLASSIFICATIONs.Find(id);
+            db.CLASSIFICATIONs.Remove(cLASSIFICATIONs);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

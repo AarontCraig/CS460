@@ -6,13 +6,13 @@ namespace Homework8.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ARTIST")]
-    public partial class ARTIST
+    [Table("GENRE")]
+    public partial class GENREs
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ARTIST()
+        public GENREs()
         {
-            ARTWORKs = new HashSet<ARTWORK>();
+            CLASSIFICATIONs = new HashSet<CLASSIFICATIONs>();
         }
 
         public int ID { get; set; }
@@ -21,14 +21,7 @@ namespace Homework8.Models
         [StringLength(255)]
         public string NAME { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime DOB { get; set; }
-
-        [Required]
-        [StringLength(255)]
-        public string BIRTHCITY { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ARTWORK> ARTWORKs { get; set; }
+        public virtual ICollection<CLASSIFICATIONs> CLASSIFICATIONs { get; set; }
     }
 }

@@ -27,8 +27,31 @@ CREATE TABLE dbo.CLASSIFICATION (
 );
 
 INSERT INTO dbo.ARTIST VALUES
-	('M.C. Escher', 06/17/1898, 'Leeuwarden, Netherlands'),
-	('Leonardo Da Vinci', 05/2/1519, 'Vinci, Italy'),
-	('Hatip Mehmed Efendi', 11/18/1680, 'Unkown'),
-	('Salvador Dali', 05/11/1904, 'Figueres, Spain');
+	('M.C. Escher', '06/17/1898', 'Leeuwarden, Netherlands'),
+	('Leonardo Da Vinci', '05/2/1519', 'Vinci, Italy'),
+	('Hatip Mehmed Efendi', '11/18/1680', 'Unkown'),
+	('Salvador Dali', '05/11/1904', 'Figueres, Spain');
 	
+INSERT INTO dbo.ARTWORK VALUES
+	('Circle Limit III', '1'),
+	('Twon Tree', '1'),
+	('Mona Lisa', '2'),
+	('The Vitruvian Man', '2'),
+	('Ebru', '3'),
+	('Honey Is Sweeter Than Blood', '4');
+
+INSERT INTO dbo.GENRE VALUES 
+	('Tesselation'),
+	('Surrealism'),
+	('Portrait'),
+	('Renaissance');
+
+INSERT INTO dbo.CLASSIFICATION VALUES
+	(1, 1),
+	(2, 1),
+	(2, 2),
+	(3, 3),
+	(3, 4),
+	(4, 4),
+	(5, 1),
+	(6, 2);

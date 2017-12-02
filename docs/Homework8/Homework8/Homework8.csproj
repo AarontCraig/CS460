@@ -160,11 +160,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="DAL\Art.cs" />
-    <Compile Include="Models\ARTIST.cs" />
-    <Compile Include="Models\ARTWORK.cs" />
-    <Compile Include="Models\CLASSIFICATION.cs" />
-    <Compile Include="Models\GENRE.cs" />
+    <Compile Include="Models\ARTISTs.cs" />
+    <Compile Include="Models\ARTWORKs.cs" />
+    <Compile Include="Models\CLASSIFICATIONs.cs" />
+    <Compile Include="Models\GENREs.cs" />
+    <Compile Include="DAL\UserContext.cs" />
     <Compile Include="Models\ViewModels\AllArt.cs" />
     <Compile Include="Models\ViewModels\jsonModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -227,26 +227,26 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\ARTWORKs\Create.cshtml" />
-    <Content Include="Views\ARTWORKs\Delete.cshtml" />
-    <Content Include="Views\ARTWORKs\Details.cshtml" />
-    <Content Include="Views\ARTWORKs\Edit.cshtml" />
-    <Content Include="Views\ARTWORKs\Index.cshtml" />
     <Content Include="Views\ARTISTs\Create.cshtml" />
     <Content Include="Views\ARTISTs\Delete.cshtml" />
     <Content Include="Views\ARTISTs\Details.cshtml" />
     <Content Include="Views\ARTISTs\Edit.cshtml" />
     <Content Include="Views\ARTISTs\Index.cshtml" />
-    <Content Include="Views\GENREs\Create.cshtml" />
-    <Content Include="Views\GENREs\Delete.cshtml" />
-    <Content Include="Views\GENREs\Details.cshtml" />
-    <Content Include="Views\GENREs\Edit.cshtml" />
-    <Content Include="Views\GENREs\Index.cshtml" />
+    <Content Include="Views\ARTWORKs\Create.cshtml" />
+    <Content Include="Views\ARTWORKs\Delete.cshtml" />
+    <Content Include="Views\ARTWORKs\Details.cshtml" />
+    <Content Include="Views\ARTWORKs\Edit.cshtml" />
+    <Content Include="Views\ARTWORKs\Index.cshtml" />
     <Content Include="Views\CLASSIFICATIONs\Create.cshtml" />
     <Content Include="Views\CLASSIFICATIONs\Delete.cshtml" />
     <Content Include="Views\CLASSIFICATIONs\Details.cshtml" />
     <Content Include="Views\CLASSIFICATIONs\Edit.cshtml" />
     <Content Include="Views\CLASSIFICATIONs\Index.cshtml" />
+    <Content Include="Views\GENREs\Create.cshtml" />
+    <Content Include="Views\GENREs\Delete.cshtml" />
+    <Content Include="Views\GENREs\Details.cshtml" />
+    <Content Include="Views\GENREs\Edit.cshtml" />
+    <Content Include="Views\GENREs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
