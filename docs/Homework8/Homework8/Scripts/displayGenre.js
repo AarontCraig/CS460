@@ -1,13 +1,11 @@
 ﻿function display(id) {
     var clickedID = id;
     $.ajax({
-        url: '/Home/Results',
+        url: "/Home/Index",
         data: {
-            'ID': id
+            ID: id
         },
-        type: "GET",
-        dataType: "json",
-        async: true,
+        type: "POST",
         success: function (data) {
             $('.toDelete').remove();
             for (var i = 0; i < data.length; ++i)
@@ -19,11 +17,6 @@
                 });
                 $('#details').append('<br class=\"toDelete\">');
             }
-        },
-        error: function (xhr, status, error) {
-            alert(xhr.getAllResponseHeaders);
-            alert(status);
-            alert(error);
         }
     });
 }

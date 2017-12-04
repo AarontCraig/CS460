@@ -214,7 +214,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Properties\PublishProfiles\CS460-HW9 - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\HW9-With-DB - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\HW9-With-DB - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />

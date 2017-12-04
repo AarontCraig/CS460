@@ -7,7 +7,6 @@ using Homework8.Models;
 using Homework8.Models.ViewModels;
 using System.Diagnostics;
 using System.Web.Script.Serialization;
-using Newtonsoft.Json;
 
 namespace Homework8.Controllers
 {
@@ -28,8 +27,8 @@ namespace Homework8.Controllers
 
             return View(data);
         }
-        [HttpGet]
-        public JsonResult Results(int? ID)
+        [HttpPost]
+        public ActionResult Index(int? ID)
         {
             //Create the model we'll use
             IList<jsonModel> data = new List<jsonModel>();
@@ -49,7 +48,9 @@ namespace Homework8.Controllers
                 }
             }
 
-            //return JsonConvert.SerializeObject(toReturn);
+            IEnumerable<jsonModel> toReturn = data.OrderBy(d => d.Artwork);
+
+            //data.OrderBy(data => data.Artwork);
 
             return Json(data.OrderBy(d => d.Artwork), JsonRequestBehavior.AllowGet);
         }
