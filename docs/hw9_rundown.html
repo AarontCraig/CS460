@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Aaron Craig's CS Portfolio</title>
+        <link rel="stylesheet" type="text/css" href="HW 1\My Website\bootstrap 3\css\bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="portfolio.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        </head>
+    <body>
+        <div class="container=fluid">
+            <h1 class="jumbotron text-center">Homework 9 Detailed</h1>
+                <div class="row content">
+                        <div class="col-sm-3 sidenav">
+                            <h4>Aaron's CS Portfolio</h4>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="https://github.com/AarontCraig/CS460/tree/master/docs/HW%201/My%20Website">My GitHub Repo</a></li>
+                                <li><a href="#">Homework 9 Detailed</a></li>
+                                <li><a href="hw8_rundown.html">Homework 8 Detailed</a></li>
+                                <li><a href="hw7_rundown.html">Homework 7 Detailed</a></li>
+                                <li><a href="hw6_rundown.html">Homework 6 Detailed</a></li>
+                                <li><a href="hw5_rundown.html">Homework 5 Detailed</a></li>
+                                <li><a href="hw4_rundown.html">Homework 4 Detailed</a></li>
+                                <li><a href="hw3_rundown.html">Homework 3 Detailed</a></li>
+                                <li><a href="hw2_rundown.html">Homework 2 Detailed</a></li>
+                                <li><a href="hw1_rundown.html">Homework 1 Detailed</a></li>
+                            </ul>
+                            <br>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search Blog..">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    <!--Written portion here-->
+                    <div class="col-md-6">
+                        <p>
+                                This homework was to take the previous assignment and deply it through Azure. I thought it would be nice
+                                and easy, but I was wrong. I never got the ajax functioning properly, although the rest of the process
+                                did go fairly smoothly.
+                        </p>
+                        <ol class="rundown">
+                            <li>
+                                The first thing I did was to sign up for Azure. It's a pretty simple process and they gave me $200 in credit
+                                for their services.
+                            </li>
+                            <li>
+                                Then I began researching how to deply to Azure. Turns out, the process is pretty straight forward and
+                                most of it can be done within my VS application. So I did that, deploying to the cloud, and got by Website
+                                up and running really fast.
+                                <img src="Homework9\Images\Azure_App.PNG" height="600" width="1000">
+                            </li>
+                            <li>
+                                I had to alter my connection to the database, to allow it to be access online.
+                                <img src="Homework9\Images\Connection_Settings.PNG" height="600" width="1000">
+                            </li>
+                            <li>
+                                Then my problems started with Ajax. It worked locally just fine, but on Azure it wouldn't accept
+                                the data my controller would pass back. It's something I"m still trying to figure out.
+                            </li>
+                            <p>
+                                I'd say I learned to never put off something simple until later, because it can turn out to be the 
+                                most difficult project of the term..
+                            </p>
+                    </div>
+                </div>
+        </div>
+    </body>
+</html>

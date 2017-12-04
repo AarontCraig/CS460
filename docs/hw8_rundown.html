@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Aaron Craig's CS Portfolio</title>
+        <link rel="stylesheet" type="text/css" href="HW 1\My Website\bootstrap 3\css\bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="portfolio.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        </head>
+    <body>
+        <div class="container=fluid">
+            <h1 class="jumbotron text-center">Homework 8 Detailed</h1>
+                <div class="row content">
+                        <div class="col-sm-3 sidenav">
+                            <h4>Aaron's CS Portfolio</h4>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="https://github.com/AarontCraig/CS460/tree/master/docs/HW%201/My%20Website">My GitHub Repo</a></li>
+                                <li><a href="#">Homework 8 Detailed</a></li>
+                                <li><a href="hw7_rundown.html">Homework 7 Detailed</a></li>
+                                <li><a href="hw6_rundown.html">Homework 6 Detailed</a></li>
+                                <li><a href="hw5_rundown.html">Homework 5 Detailed</a></li>
+                                <li><a href="hw4_rundown.html">Homework 4 Detailed</a></li>
+                                <li><a href="hw3_rundown.html">Homework 3 Detailed</a></li>
+                                <li><a href="hw2_rundown.html">Homework 2 Detailed</a></li>
+                                <li><a href="hw1_rundown.html">Homework 1 Detailed</a></li>
+                            </ul>
+                            <br>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search Blog..">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    <!--Written portion here-->
+                    <div class="col-md-6">
+                        <p>
+                            In this assignment, I had to create my own database with references and use Ajax to display some of their artwork
+                            on the page dynamically, depending on what button the user clicked on.
+                        </p>
+                        <ol class="rundown">
+                            <li>I created a new branch for this project, but I was working on multiple machines, and I kept forgetting
+                                to change branches when changing and my branches got really messed up. I did use them, and eventually merged
+                                them but they may be a difficult to follow.
+                            </li>
+                            <img src="Homework8\Images\Home_Page.PNG" height="600" width="1000">
+                            <br><br>
+                            <li>
+                                To begin, I looked at the database we were supposed to create and the relationships they needed to have. Some of
+                                them were fairly obvious, but I still needed to plan out how they would work. I took to drawing up a sketch, a very
+                                rough Entity Relationship Diagram:
+                                <br><br>
+                                <img src="Homework8\Database_Sketch.PNG" height="1000" width="600">
+                            </li>
+                            <li>
+                                After I had an idea of how they would be related, I set to writing the SQL needed to created the tables in 
+                                the database. I needed to set primary keys and foreign keys to reference other tables, which was a little tricky
+                                at first. But I ended up with this code:
+                                <xmp>
+CREATE TABLE dbo.ARTIST (
+    [ID] INT IDENTITY (1, 1) NOT NULL,
+    [NAME] VARCHAR(255) NOT NULL,
+    [DOB] DATE NOT NULL,
+    [BIRTHCITY] VARCHAR(255) NOT NULL,
+    CONSTRAINT [PK_dbo.ARTIST] PRIMARY KEY CLUSTERED (ID)
+);
+
+CREATE TABLE dbo.ARTWORK (
+    [ID] INT IDENTITY (1, 1) NOT NULL,
+    [TITLE] VARCHAR(255) NOT NULL,
+    [ARTIST] INT FOREIGN KEY REFERENCES dbo.ARTIST(ID) NOT NULL,
+    CONSTRAINT [PK_dbo.ARTWORK] PRIMARY KEY CLUSTERED (ID)
+);
+
+CREATE TABLE dbo.GENRE (
+    [ID] INT IDENTITY (1, 1) NOT NULL,
+    [NAME] VARCHAR(255) NOT NULL,
+    CONSTRAINT [PK_dbo.GENRE] PRIMARY KEY CLUSTERED (ID)
+);
+
+CREATE TABLE dbo.CLASSIFICATION (
+    [ID] INT IDENTITY (1, 1) NOT NULL,
+    [ARTWORK] INT FOREIGN KEY REFERENCES dbo.ARTWORK(ID) NOT NULL,
+    [GENRE] INT FOREIGN KEY REFERENCES dbo.GENRE(ID) NOT NULL,
+    CONSTRAINT [PK_dbo.CLASSIFICATION] PRIMARY KEY CLUSTERED (ID)
+);
+                                </xmp>
+                            </li>
+                            <li>
+                                Once that was complete, I set up the controllers and views associated with them, which gave me CRUD
+                                functionality for all of my tables. I auto generated these which was great, since Visual Studio took care
+                                of most of the haavy lifting.
+                                <br><br>
+                                <img src="Homework8\Images\Controllers.PNG" height="600" width="1000">
+                                <br>
+                                Once those were in place, I could add and delete Artists, paintings, and everything from my web app.
+                            </li>
+                            <li>
+                                So my next task was to insert data. At first I did this manually through my web app, but I quickly realized
+                                that this wouldn't work, as my database can easily reset. So I figured out how to insert into my tables,
+                                even though they had references to others.
+                                <xmp>
+    INSERT INTO dbo.ARTIST VALUES
+    ('M.C. Escher', '06/17/1898', 'Leeuwarden, Netherlands'),
+    ('Leonardo Da Vinci', '05/2/1519', 'Vinci, Italy'),
+    ('Hatip Mehmed Efendi', '11/18/1680', 'Unkown'),
+    ('Salvador Dali', '05/11/1904', 'Figueres, Spain');
+    
+INSERT INTO dbo.ARTWORK VALUES
+    ('Circle Limit III', '1'),
+    ('Twon Tree', '1'),
+    ('Mona Lisa', '2'),
+    ('The Vitruvian Man', '2'),
+    ('Ebru', '3'),
+    ('Honey Is Sweeter Than Blood', '4');
+
+INSERT INTO dbo.GENRE VALUES 
+    ('Tesselation'),
+    ('Surrealism'),
+    ('Portrait'),
+    ('Renaissance');
+
+INSERT INTO dbo.CLASSIFICATION VALUES
+    (1, 1),
+    (2, 1),
+    (2, 2),
+    (3, 3),
+    (3, 4),
+    (4, 4),
+    (5, 1),
+    (6, 2);
+                                </xmp>
+                                <br>
+                                This worked, and I was amazed at how they were all connected and that the auto genereated controllers used
+                                the references when making new Artworks and such.
+                                <br><br>
+                                <img src="Homework8\Images\Artists_Page.PNG" height="600" width="1000">
+                                <br>
+                            </li>
+                            <li>
+                                The last thing I did was set up the ajax to display artworks by genre on the main page. I set up some buttons
+                                using razor, and then connected their click to an ajax event to append data to an invisible div.
+                                <xmp>
+function display(id) {
+    var clickedID = id;
+    $.ajax({
+        url: "/Home/Index",
+        data: {
+            ID: id
+        },
+        type: "POST",
+        dataType: 'json',
+        success: function (data) {
+            $('.toDelete').remove();
+            for (var i = 0; i < data.length; ++i)
+            {
+                $('#details').append("<p class=\"toDelete\">" + "<b>Artist: </b>" + data[i].ArtistName) + "</p>";
+                $('#details').append("<p class=\"toDelete\">" + "<b>Title: </b>" + data[i].Artwork) + "</p><br>";
+                $('#details').css({
+                    'padding' : 20
+                });
+                $('#details').append('<br class=\"toDelete\">');
+            }
+        }
+    });
+}
+                                </xmp>
+                                <br>
+                                <img src="Homework8\Images\Home_Displaying.PNG" height="600" width="1000">
+                                <br>
+                            </li>
+                            <p>
+                                This turned out great and it all worked. I was happy with it and definitely felt more confident
+                                working with ajax and databases.
+                            </p>
+                    </div>
+                </div>
+        </div>
+    </body>
+</html>
