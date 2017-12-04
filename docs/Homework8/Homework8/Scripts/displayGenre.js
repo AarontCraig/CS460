@@ -6,6 +6,7 @@
             ID: id
         },
         type: "POST",
+        dataType: 'json',
         success: function (data) {
             $('.toDelete').remove();
             for (var i = 0; i < data.length; ++i)

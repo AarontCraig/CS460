@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Aaron Craig's CS Portfolio</title>
+        <link rel="stylesheet" type="text/css" href="HW 1\My Website\bootstrap 3\css\bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="portfolio.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        </head>
+    <body>
+        <div class="container=fluid">
+            <h1 class="jumbotron text-center">Homework 7 Detailed</h1>
+                <div class="row content">
+                        <div class="col-sm-3 sidenav">
+                            <h4>Aaron's CS Portfolio</h4>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="https://github.com/AarontCraig/CS460/tree/master/docs/HW%201/My%20Website">My GitHub Repo</a></li>
+                                <li><a href="#">Homework 7 Detailed</a></li>
+                                <li><a href="hw6_rundown.html">Homework 6 Detailed</a></li>
+                                <li><a href="hw5_rundown.html">Homework 5 Detailed</a></li>
+                                <li><a href="hw4_rundown.html">Homework 4 Detailed</a></li>
+                                <li><a href="hw3_rundown.html">Homework 3 Detailed</a></li>
+                                <li><a href="hw2_rundown.html">Homework 2 Detailed</a></li>
+                                <li><a href="hw1_rundown.html">Homework 1 Detailed</a></li>
+                            </ul>
+                            <br>
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search Blog..">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    <!--Written portion here-->
+                    <div class="col-md-6">
+                        <p>
+                            For this homework I was assigned to create a web application that connected with Giphy's API. I needed
+                            to allow the uesr to search for Gifs and then update the page using Ajax.
+                        </p>
+                        <ol class="rundown">
+                            <li>The first thing I did was to create a new branch on my github website. I did this using the git commands:
+                                <br><code>git branch -b HW7</code>
+                                <br><code>git checkout HW7</code>
+                                <br>And then I began working on that branch, pushing changes, creating files, all without affecting my main
+                                branch. At the end, I merged them all together. This was the only part I didn't have any problems with.
+                            </li>
+                            <img src="Homework7\Images\Home.PNG" height="600" width="1000">
+                            <br><br>
+                            <li>
+                                The easiest part was setting up the home page. As the projet was only one page, it didn't take long
+                                to get set up and looking decent. Once that was finished, I moved on to trying to figure out how to 
+                                do Get requests in C#.
+                            </li>
+                            <li>
+                                I signed up with Giphy as a developer, which was very simple and easy, then began exploring their docs
+                                and reading over their API.
+                                <br><br>
+                                <img src="Homework7\Images\Giphy_Docs.PNG" height="600" width="1000">
+                            </li>
+                            <li>
+                                Right along with that, was hiding my developer key in my application, as I didn't want to put it inside of my
+                                repo. It's not safe there, even if it's in a private repo. So, following the instructions of class, I hid
+                                my key outside of my repo doing this:
+                                <br><br>
+                                <xmp>
+<appSettings file="..\..\..\..\GiphyAPIKey.config"></appSettings>
+
+string apiKey = System.Web.Configuration.WebConfigurationManager.AppSettings["GiphyKey"];
+                                </xmp>
+                            </li>
+                            <li>
+                                After that I endeavored to learn using a REST Api using C# commands. This proved difficult, as Giphy had no
+                                docs for accessing their data using C#, so I had to look elsewhere. After a lot of searching, I discovered
+                                the WebRequest class and all that went along with it. I was able to query the Giphy servers using this code:
+                                <br><br>
+                                <xmp>
+WebRequest request = WebRequest.Create("http://api.giphy.com/v1/gifs/search?q=" + q + "&limit=20&rating=" + rating + "&api_key=" + apiKey); //Requests the data from the url
+WebResponse response = request.GetResponse(); //Gets everything back from that website into one object
+Stream dataStream = response.GetResponseStream(); //Gets the response I want back, the json object
+StreamReader reader = new StreamReader(dataStream); //Decodes the stream
+string responseFromServer = reader.ReadToEnd(); //Saves it into a string
+                                </xmp>
+                                <br>
+                                The q and rating are data that are passed in from the website, the user typing in their query and
+                                choosing a rating. At first I had to hard code those values in, until I figured out how to use Ajax.
+                                <br><br>
+                                <img src="Homework7\Images\CatSearch.PNG" height="600" width="1000">
+                            </li>
+                            <li>
+                                The ajax took me a long time to figure out, as I just didn't understand how it worked or even what language to 
+                                use. I thought it was a new language, but it's an extension of Javascript and Jquery. Eventually I figured
+                                it out and my code looked like this:
+                                <br><br>
+                                <xmp>
+function update() {
+var query = document.getElementById("searchBar").value;
+var rating = 0;
+if (document.getElementById("y").checked)
+    rating = "y";
+else if (document.getElementById("g").checked)
+    rating = "g";
+else if (document.getElementById("pg").checked)
+    rating = "pg";
+else if (document.getElementById("pg-13").checked)
+    rating = "pg-13";
+else
+    rating = "r";
+$.ajax({
+    url: "/Search/Index",
+    data: {
+        q: query,
+        rating: rating
+    },
+    dataType: "json",
+    type: "GET",
+    success: function (data) {
+        $('.gif').remove();
+        for (var i = 0; i < data.length; ++i) {
+            $("#gifs").append("<img src=\"" + data[i].url + "\" " + "class=\"gif\" />");
+            $('#gifs img').css({
+                'width': 200,
+                'height': 200
+            });
+        }
+    }
+});
+}
+                                </xmp>
+                                <br>
+                                The update function would get called when the search button was clicked.
+                            </li>
+                            <p>
+                                I finally finished the project and felt pretty good about it all. I learned how to use the REST API, or at least
+                                the basics of it, and learned some Ajax.
+                            </p>
+                    </div>
+                </div>
+        </div>
+    </body>
+</html>

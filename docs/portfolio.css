@@ -48,3 +48,10 @@ xmp
 {
     color: rgba(34, 167, 105, 0.56);
 }
+.thumbnail {
+    align-content: left;
+}
+.summary {
+    align-content: right;
+    margin-left: 25px;
+}
