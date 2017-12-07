@@ -27,10 +27,22 @@ namespace Homework8.Controllers
 
             return View(data);
         }
-        [HttpPost]
-        public ActionResult Index(int? ID)
+
+        [HttpGet]
+        public JsonResult Display(int? ID)
         {
+            var data = db.GENREs.Where(g => g.ID == ID)
+                .Select(x => x.CLASSIFICATIONs)
+                .FirstOrDefault()
+                .Select(x => new { x.ARTWORK1.TITLE, x.ARTWORK1.ARTIST1.NAME })
+                .OrderBy(x => x.TITLE)
+                .ToList();
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+            
+
             //Create the model we'll use
+            /*
             IList<jsonModel> data = new List<jsonModel>();
 
             //Get the ID of the genre we're looking for
@@ -48,11 +60,14 @@ namespace Homework8.Controllers
                 }
             }
 
-            IEnumerable<jsonModel> toReturn = data.OrderBy(d => d.Artwork);
+            JavaScriptSerializer format = new JavaScriptSerializer();
+            //return Json(format.Serialize(data));
+
+            //IEnumerable<jsonModel> toReturn = data.OrderBy(d => d.Artwork);
 
             //data.OrderBy(data => data.Artwork);
 
-            return Json(data.OrderBy(d => d.Artwork), JsonRequestBehavior.AllowGet);
+            return Json(data.OrderBy(d => d.Artwork), JsonRequestBehavior.AllowGet); */
         }
     }
 }

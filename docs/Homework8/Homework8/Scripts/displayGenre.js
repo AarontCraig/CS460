@@ -1,12 +1,9 @@
 ﻿function display(id) {
-    var clickedID = id;
+    var source = "/Home/Display?ID=" + id;
     $.ajax({
-        url: "/Home/Index",
-        data: {
-            ID: id
-        },
-        type: "POST",
-        dataType: 'json',
+        type: "GET",
+        dataType: "json",
+        url: source,
         success: function (data) {
             $('.toDelete').remove();
             for (var i = 0; i < data.length; ++i)
